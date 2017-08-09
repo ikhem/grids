@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import Karousel from './components/Karousel/Karousel';
+import Navigation from './components/Header/Navigation';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Grid className="Landing">
-        <Row>
+      <Grid fluid="false">
+        <Navigation />
+        <Karousel />
+        {/* <Row>
           <Col lg={6}><img alt="img1l" src={require("./img/hp-slideshow-l1-med-std_0.jpg")} /></Col>
           <Col lg={6}><img alt="img1r" src={require("./img/hp-slideshow-r1-med-std_0.jpg")} /></Col> 
-        </Row>
+        </Row> */}
          <Row className="HowItWorks">
           <Col lg={12}>
             <Row>
@@ -54,10 +59,9 @@ class App extends Component {
           <Col lg={2}>Instgram</Col>
         </Row>
         <Row className="FooterPic">
-          <Col lg={12}>
-          <img src={require("./bottom.jpg")} />
-          </Col> 
+          <p><span>"Kiva is a simple concept that<br/>that can change a person's life."</span><br/> - Oprah Winfrey</p>
         </Row> 
+        <Footer />
       </Grid>
     );
   }
