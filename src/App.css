@@ -1,0 +1,16 @@
+/* .Grid {
+   border: 1px solid black; 
+} */
+
+.row {
+  /* border: 1px solid black; */
+  text-align: center;
+}
+
+.col-lg-6 img{
+  /* border: 1px solid black; */
+}
+
+.FooterPic img{
+  height: 420px;
+}
