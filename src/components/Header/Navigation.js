@@ -41,7 +41,7 @@ export default function Navigation(){
             <MenuItem>Press</MenuItem>
             <MenuItem>Due Diligence</MenuItem>
         </NavDropdown>
-        <NavItem href="#">Sign In</NavItem>
+        <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
       </Nav>
     </Navbar>
   );
