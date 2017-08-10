@@ -1,3 +1,27 @@
-.row {
-  background-color: green;
+.Footer {
+  text-align: center;
+  background-color: #236133;
+  height: 300px;
+} 
+
+.Footer .Top-Nav-Bottom {
+  padding-top: 30px;
+  margin-bottom: 20px;
 }
+
+.Footer a {
+  padding: 30px;
+  font-weight: bold;
+  color: #91bd47;
+  font-family: sans-serif; }
+
+.Footer .Nav-bottom {
+  padding-bottom: 30px;
+}
+
+.Footer .copyright {
+  color: white;
+}
+
+.Footer .warning {
+  margin-bottom: 15px; }

@@ -4,3 +4,7 @@ body {
   font-family: sans-serif;
   border: 1px solid black;
 }
+
+.container-fluid {
+  padding: 0;
+}

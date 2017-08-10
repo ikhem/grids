@@ -1,0 +1,34 @@
+.row {
+  /* border: 1px solid black;    */
+  text-align: center;
+  margin: 0;
+}
+
+.col-lg-6 {
+    /* border: 1px solid black;    */
+}
+
+.FollowUs {
+  background-color: white;
+}
+
+.BottomPic {
+  background-image:url('./bottom.jpg');
+}
+
+.BottomPic p {
+  color: white;
+  font-size: 32px;
+  margin: 100px;
+  font-weight: bold;
+}
+
+.Accolades {
+  background-color: #236133;
+}
+
+.Accolades p {
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+}

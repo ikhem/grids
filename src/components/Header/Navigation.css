@@ -5,3 +5,7 @@
   font-weight: bold;
   border: 0px;
 }
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
