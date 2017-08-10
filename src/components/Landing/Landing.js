@@ -40,23 +40,23 @@ export default function Landing(){
       </Row>
       <Row className="StartLending">
         {/* <Col lg={12}> */}
-        <h1>Start Lending</h1>
+        <span className="Start"><p>Start Lending</p></span>
         <p>Choose a category</p>
           <Row>
-          <Col lg={3} md={4} sm={6}><p>Search</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Women</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Agriculture</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Education</p></Col>
+          <Col lg={3} md={4} sm={6}><p><input /><br/>Search</p></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Women</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Agriculture</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Education</a></Col>
 
-          <Col lg={3} md={4} sm={6}><p>Health</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Single Parents</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Refugees and IDPs</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Shelter</p></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Health</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Single Parents</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Refugees and IDPs</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Shelter</a></Col>
       
-          <Col lg={3} md={4} sm={6}><p>Food</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Kiva U.S.</p></Col>
-          <Col lg={3} md={4} sm={6}><p>Expiring Soon</p></Col>
-          <Col lg={3} md={4} sm={6}><p>All Loans</p></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Food</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Kiva U.S.</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">Expiring Soon</a></Col>
+          <Col lg={3} md={4} sm={6}><a href="">All Loans</a></Col>
           </Row>
           {/* </Col> */}
       </Row>
