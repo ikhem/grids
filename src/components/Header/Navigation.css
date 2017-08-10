@@ -9,3 +9,7 @@
 .navbar-default .navbar-nav>li>a {
   color: white;
 }
+
+.navbar img {
+  border-radius: 50%;
+}

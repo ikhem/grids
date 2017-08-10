@@ -1,0 +1,19 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 25px; }
+  .profile img {
+    border-radius: 50%;
+    margin: 15px; }
+  .profile .name {
+    font-weight: bold;
+    font-size: 28px; }
+  .profile button {
+    border: none;
+    color: white;
+    font-size: 20px;
+    background-color: skyblue;
+    padding: 20px;
+    font-family: sans-serif;
+    margin: 20px; }
