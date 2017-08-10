@@ -13,7 +13,8 @@
 }
 
 .BottomPic {
-  background-image:url('./bottom.jpg');
+  background-image: url('./bottom.jpg');
+  background-size: cover;
 }
 
 .BottomPic p {
