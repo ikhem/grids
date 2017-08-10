@@ -70,6 +70,11 @@ app.get('/api/signout', function(req, res){
   res.status(200).redirect('http://localhost:3000/');
 })
 
+app.get('/api/loans', (req, res) =>{
+  const db = req.app.get('db');
+
+})
+
 app.get('/favorites', function(req, res){
   if(!req.user){
     res.send([])

@@ -39,7 +39,7 @@ class Navigation extends React.Component {
             <MenuItem>Short-Term Loans</MenuItem>
             <MenuItem divider />
             <MenuItem>All Categories</MenuItem>
-            <MenuItem>All Loans</MenuItem>
+            <MenuItem><Link to="/Lend">All Loans</Link></MenuItem>
         </NavDropdown>
         </Nav>
         <Nav pullRight>       
@@ -54,7 +54,7 @@ class Navigation extends React.Component {
         </NavDropdown>
         {
           this.props.user ? <Nav>
-          <NavDropdown>
+          <NavDropdown title="Profile">
             <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
             <MenuItem>My teams</MenuItem>
             <MenuItem>Donations</MenuItem>  
