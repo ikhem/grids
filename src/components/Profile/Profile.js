@@ -15,7 +15,7 @@ class Profile extends React.Component {
         {this.props.loading ? <h1>Loading</h1> : 
         <div>
           <p className="name">{this.props.user.displayName} </p>
-          <img width={100} height={100} src= {this.props.user.picture} alt="profile_pic" />
+          {/* <img width={100} height={100} src= {this.props.user.picture} alt="profile_pic" /> */}
           <p>Outstanding Loans</p>
           <p>Available Kiva Credit</p>
           <button>Find a Loan</button>

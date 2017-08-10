@@ -10,6 +10,15 @@
   color: white;
 }
 
+.navbar-nav li a {
+   /* line-height: 30px;  */
+}
+
 .navbar img {
   border-radius: 50%;
+}
+
+.nav li a {
+  /* padding-top: 3px;
+  padding-bottom: 3px; */
 }

@@ -14,10 +14,8 @@ class Navigation extends React.Component {
   render() {
   return (
     <Navbar>
-      {/* <Nav> */}
         <Nav>
         <NavItem><Link to="/">Kiva</Link></NavItem> 
-        {/* <Nav> */}
         <NavDropdown title="Lend">
           <h3>Categories</h3>
             <MenuItem>Women</MenuItem>
@@ -39,10 +37,12 @@ class Navigation extends React.Component {
             <MenuItem>Underbanked Areas</MenuItem>
             <MenuItem>Groups</MenuItem>
             <MenuItem>Short-Term Loans</MenuItem>
-            <br/>
+            <MenuItem divider />
             <MenuItem>All Categories</MenuItem>
             <MenuItem>All Loans</MenuItem>
         </NavDropdown>
+        </Nav>
+        <Nav pullRight>       
         <NavDropdown title="About">
             <MenuItem>About Us</MenuItem>
             <MenuItem>How Kiva Works</MenuItem>
@@ -52,17 +52,20 @@ class Navigation extends React.Component {
             <MenuItem>Press</MenuItem>
             <MenuItem>Due Diligence</MenuItem>
         </NavDropdown>
-        </Nav>
         {
-          this.props.user ?
-          <Nav pullRight>
-          <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem>
-          </Nav> :
-          <Nav pullRight>
-            <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
-          </Nav>
+          this.props.user ? <Nav>
+          <NavDropdown>
+            <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
+            <MenuItem>My teams</MenuItem>
+            <MenuItem>Donations</MenuItem>  
+            <MenuItem>Settings</MenuItem>   
+            <MenuItem divider />     
+            <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>
+          </NavDropdown>
+          <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem></Nav> :
+          <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
         }
-      {/* </Nav> */}
+       </Nav> 
     </Navbar>
     );
   }

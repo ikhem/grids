@@ -65,6 +65,11 @@ app.get('/api/Profile', function(req, res){
   res.send(req.user)
 })
 
+app.get('/api/signout', function(req, res){
+  req.logout();
+  res.status(200).redirect('http://localhost:3000/');
+})
+
 app.get('/favorites', function(req, res){
   if(!req.user){
     res.send([])
