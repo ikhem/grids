@@ -8,7 +8,7 @@ export default function Navigation(){
       <Nav>
         <NavItem>Kiva</NavItem> 
         <NavDropdown title="Lend">
-          <h1>Categories</h1>
+          <h3>Categories</h3>
             <MenuItem>Women</MenuItem>
             <MenuItem>Agriculture</MenuItem>
             <MenuItem>Education</MenuItem>

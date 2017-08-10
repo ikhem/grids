@@ -8,8 +8,32 @@
     /* border: 1px solid black;    */
 }
 
-.FollowUs {
+.HowItWorks {
+  background-color: #63a541;
+  padding-top: 20px;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.repeat {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Social {
   background-color: white;
+  padding: 45px;
+}
+
+.Social p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #63a541;
 }
 
 .BottomPic {
@@ -26,10 +50,27 @@
 
 .Accolades {
   background-color: #236133;
+  padding-top: 20px;
 }
 
 .Accolades p {
   color: white;
   font-weight: bold;
   font-size: 28px;
+}
+
+.Accolades .desc {
+  font-size: 14px;
+  color: #63a541;
+}
+
+.FollowUs {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon {
+  border: 1px #666 solid;
+  border-radius: 50%;
+  padding: 15px;
 }
