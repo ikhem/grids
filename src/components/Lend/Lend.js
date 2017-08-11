@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getLoans } from '../../ducks/reducer';
+import { Card , Icon, Image, Progress } from 'semantic-ui-react';
 
 class Lend extends React.Component {
   
@@ -12,17 +13,30 @@ class Lend extends React.Component {
     return(
       <div>
       <h1>Loans</h1>
+      <Card.Group>
       {!this.props.loans ? null : 
         this.props.loans.loans.map(loan => {
           return (
-            <div>
-              <p>{loan.image.id}</p>
-              <p>Purpose: {loan.activity}</p>
-              <p>Name: {loan.name}</p>
-            </div>
+            <Card>
+              <Card.Content>
+                <Card.Header>
+                  {loan.name}
+                </Card.Header>
+                <Card.Meta>
+                  {loan.location.country}
+                </Card.Meta>
+                <Card.Description>
+                  A Loan of ${loan.loan_amount} helps {loan.use}
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <Progress total={loan.funded_amount} color='green'>sdf</Progress>
+              </Card.Content>
+            </Card> 
           )
         })
       }
+      </Card.Group>
       </div>
     )
   }
