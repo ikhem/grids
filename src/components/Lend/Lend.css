@@ -1,0 +1,8 @@
+.progress {
+  height: 0px; 
+  overflow: visible;
+}
+
+.ui.progress .bar {
+  min-width: 0px;
+}

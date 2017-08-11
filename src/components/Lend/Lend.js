@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getLoans } from '../../ducks/reducer';
-import { Card , Icon, Image, Progress } from 'semantic-ui-react';
+import { Card, Image, Progress, Button } from 'semantic-ui-react';
+
+import { Grid, Row, Col } from 'react-bootstrap';
+
+import './Lend.css';
 
 class Lend extends React.Component {
   
@@ -11,13 +15,17 @@ class Lend extends React.Component {
 
   render(){
     return(
-      <div>
+      <Grid fluid='false'>
+        <Row>
+          <Col lg={2}>SideBar</Col>
+          <Col lg={10}>
       <h1>Loans</h1>
       <Card.Group>
       {!this.props.loans ? null : 
         this.props.loans.loans.map(loan => {
           return (
             <Card>
+              <Image src={`http://www.kiva.org/img/h300w480/${loan.image.id}.jpg`} />
               <Card.Content>
                 <Card.Header>
                   {loan.name}
@@ -30,14 +38,22 @@ class Lend extends React.Component {
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
-                <Progress total={loan.funded_amount} color='green'>sdf</Progress>
+                <Progress value={loan.funded_amount} total={loan.loan_amount} label={`$`+(loan.loan_amount-loan.funded_amount)+' to go'} color='green' progress='percent' />  
+              </Card.Content>
+              <Card.Content extra>
+                <div className="ui two buttons">
+                  <Button basic color="green">Lend $25</Button>
+                  <Button basic color="green">Learn More</Button>
+                </div>
               </Card.Content>
             </Card> 
           )
         })
       }
       </Card.Group>
-      </div>
+        </Col>
+      </Row>
+      </Grid>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getLender } from '../../ducks/reducer';
 import './Profile.css';
 
@@ -18,7 +19,7 @@ class Profile extends React.Component {
           {/* <img width={100} height={100} src= {this.props.user.picture} alt="profile_pic" /> */}
           <p>Outstanding Loans</p>
           <p>Available Kiva Credit</p>
-          <button>Find a Loan</button>
+          <button><Link to='/Lend'>Find a Loan</Link></button>
         </div>
         }
       </div>
