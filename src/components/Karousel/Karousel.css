@@ -5,5 +5,10 @@
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
   max-width: 100%;
   /* height: auto; */
-  display: inline;
+  display: inline-block;
+}
+
+.carousel-caption {
+  font-weight: bold;
+  font-size: 40px;
 }

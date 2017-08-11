@@ -66,13 +66,22 @@
 
 .FollowUs {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; 
+}
+
+.FollowUs a {
+  margin: 0px 50px 0px 50px;
 }
 
 .icon {
   border: 1px #666 solid;
   border-radius: 50%;
-  padding: 15px;
+  padding: 20px;
+}
+
+.icon img {
+  width: 50px;
+  height: 50px;
 }
 
 .Start p {

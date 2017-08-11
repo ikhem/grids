@@ -69,20 +69,20 @@ export default function Landing(){
         <Col lg={2}>LinkedIn</Col>
         <Col lg={2}>Instgram</Col> */}
         <div className="FollowUs">
-          <a href="#" className="icon">
-            <img width={30} height={30} alt="Facebook" src={require('./fb-art.png')} />
+          <a href="https://www.facebook.com/kiva" className="icon">
+            <img alt="Facebook" src={require('./fb-art.png')} />
           </a>
-          <a href="#" className="icon">
-            <img width={30} height={30} alt="Twitter" src={require('./twitter-art.png')} />
+          <a href="https://twitter.com/Kiva" className="icon">
+            <img alt="Twitter" src={require('./twitter-art.png')} />
           </a>
-          <a href="#" className="icon">
-            <img width={30} height={30} alt="YouTube" src={require('./youtube-art.svg')} />
+          <a href="https://www.youtube.com/user/kiva" className="icon">
+            <img alt="YouTube" src={require('./youtube-art.svg')} />
           </a>
-          <a href="#" className="icon">
-            <img width={30} height={30} alt="LinkedIn" src={require('./linkedin-art.png')} />
+          <a href="https://www.linkedin.com/company/266361" className="icon">
+            <img alt="LinkedIn" src={require('./linkedin-art.png')} />
           </a>
-          <a href="#" className="icon">
-            <img width={30} height={30} alt="Instagram" src={require('./instagram-art.png')} />
+          <a href="https://instagram.com/kiva_microloans/" className="icon">
+            <img alt="Instagram" src={require('./instagram-art.png')} />
           </a>
         </div>
       </Row>
