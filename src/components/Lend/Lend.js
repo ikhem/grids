@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getLoans } from '../../ducks/reducer';
-import { Card, Image, Progress, Button } from 'semantic-ui-react';
+import { Card, Image, Progress, Button, Loader, Menu } from 'semantic-ui-react';
 
 import { Grid, Row, Col } from 'react-bootstrap';
 
@@ -14,14 +14,23 @@ class Lend extends React.Component {
   }
 
   render(){
+    console.log(this.props.loans)
     return(
       <Grid fluid='false'>
         <Row>
-          <Col lg={2}>SideBar</Col>
+          <Col lg={2}>
+          <h1>Menu</h1>
+          <Menu vertical>
+            <Menu.Item>
+              Inbox
+            </Menu.Item>
+          </Menu>
+          
+          </Col>
           <Col lg={10}>
-      <h1>Loans</h1>
+        <h1>Loans</h1>
       <Card.Group>
-      {!this.props.loans ? null : 
+      {!this.props.loans ?  <Loader active inline='centered' /> : 
         this.props.loans.loans.map(loan => {
           return (
             <Card>

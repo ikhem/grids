@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action){
       return Object.assign({}, state, {loading: false, user: action.payload});
     // case GET_LOANS + '_PENDING':
     //   return Object.assign({}, state, {loading: true});
-    case GET_LOANS:
+    case GET_LOANS + '_FULFILLED':
       return Object.assign({}, state, { loans: action.payload})
     default:
       return state;
@@ -41,10 +41,10 @@ export function getLender(){
 // **Implement pushing to backend
 
 export function getLoans(){
-  // let promise = axios.get('http://api.kivaws.org/v1/loans/newest.json').then(res => res.data)
-  // console.log(promise);
-  let promise = newest;
-  console.log(promise.loans);
+  let promise = axios.get('http://api.kivaws.org/v1/loans/newest.json').then(res => res.data)
+  console.log(promise);
+  // let promise = newest;
+  // console.log(promise.loans);
   return {
     type: GET_LOANS,
     payload: promise
