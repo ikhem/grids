@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLender } from '../../ducks/reducer';
+import { getLender, getCart } from '../../ducks/reducer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
@@ -9,12 +9,13 @@ class Navigation extends React.Component {
 
   componentDidMount(){
     this.props.getLender();
+    this.props.getCart();
   }
 
   render() {
   return (
     <Navbar>
-        <Nav>
+      <Nav>
         <NavItem><Link to="/">Kiva</Link></NavItem> 
         <NavDropdown title="Lend">
           <h3>Categories</h3>
@@ -41,9 +42,12 @@ class Navigation extends React.Component {
             <MenuItem>All Categories</MenuItem>
             <MenuItem><Link to="/Lend">All Loans</Link></MenuItem>
         </NavDropdown>
-        </Nav>
-        <Nav pullRight>       
-        <NavDropdown title="About">
+      </Nav>
+      <Nav pullRight>
+        {
+          this.props.cart.length > 0 ?
+          <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
+          <NavDropdown title="About">
             <MenuItem>About Us</MenuItem>
             <MenuItem>How Kiva Works</MenuItem>
             <MenuItem>Impact</MenuItem>
@@ -51,21 +55,25 @@ class Navigation extends React.Component {
             <MenuItem>Finaces</MenuItem>
             <MenuItem>Press</MenuItem>
             <MenuItem>Due Diligence</MenuItem>
-        </NavDropdown>
-        {
-          this.props.user ? <Nav>
-          <NavDropdown title="Profile">
-            <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
-            <MenuItem>My teams</MenuItem>
-            <MenuItem>Donations</MenuItem>  
-            <MenuItem>Settings</MenuItem>   
-            <MenuItem divider />     
-            <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>
           </NavDropdown>
-          <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem></Nav> :
+        }       
+
+        {
+          this.props.user ? 
+          <Nav>
+            <NavDropdown title="Profile">
+              <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
+              <MenuItem>My teams</MenuItem>
+              <MenuItem>Donations</MenuItem>  
+              <MenuItem>Settings</MenuItem>   
+              <MenuItem divider />     
+              <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>
+            </NavDropdown>
+            <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem>
+          </Nav> :
           <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
         }
-       </Nav> 
+      </Nav> 
     </Navbar>
     );
   }
@@ -73,8 +81,9 @@ class Navigation extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    cart: state.cart
   }
 }
 
-export default connect(mapStateToProps, { getLender })(Navigation);
+export default connect(mapStateToProps, { getLender, getCart })(Navigation);

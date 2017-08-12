@@ -41,10 +41,16 @@ export default function Karousel(){
         <img alt="img5r" src={require("./img/hp-slideshow-r5-med-std.jpg")} />
       </Carousel.Item>
       <Carousel.Item>
+        <Carousel.Caption>
+          <p>"My kiva loan helped to pay for eucalyptus plants, fertilizer, and farm training that allows me to support my family."<br/>Elizabeth Mother of 7, farmer, Kenya</p>
+        </Carousel.Caption>
         <img alt="img6l" src={require("./img/hp-slideshow-l6-med-std.jpg")} />
         <img alt="img6r" src={require("./img/hp-slideshow-r6-med-std.jpg")} />
       </Carousel.Item>
       <Carousel.Item>
+        <Carousel.Caption>
+          <p>Entrepreneur</p>
+        </Carousel.Caption>
         <img alt="img7l" src={require("./img/hp-slideshow-l7-med-std.jpg")} />
         <img alt="img7r" src={require("./img/hp-slideshow-r7-med-std.jpg")} />
       </Carousel.Item>

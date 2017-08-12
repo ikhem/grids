@@ -1,3 +1,7 @@
+.Lend {
+  min-height: 800px;
+}
+
 .progress {
   height: 0px; 
   overflow: visible;

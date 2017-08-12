@@ -43,7 +43,9 @@ passport.use(new Auth0Strategy({
         return done(null, profile) // Go to serialize user when done is invoked
       }).catch( (e) => console.log(e))
     } else {
-      return done(null, profile); // Go to serialize user when done is invoked
+      user[0].cart = [];
+      console.log(user);
+      return done(null, user[0]); // Go to serialize user when done is invoked
     }
   }).catch(err => console.log('check failed', err));
 }));
@@ -62,6 +64,7 @@ passport.deserializeUser(function(profileFromSession, done) {
 });
 
 app.get('/api/Profile', function(req, res){
+  console.log("Profile:", req.user)
   res.send(req.user)
 })
 
@@ -72,7 +75,13 @@ app.get('/api/signout', function(req, res){
 
 app.get('/api/loans', (req, res) =>{
   const db = req.app.get('db');
+})
 
+app.post('/api/checkout', (req, res) =>{
+  console.log(req.body);
+  req.user.cart.push(req.body)
+  console.log(req.user);
+  res.status(200).send(req.user.cart)
 })
 
 app.get('/favorites', function(req, res){

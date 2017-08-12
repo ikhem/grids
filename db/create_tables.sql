@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS borrowers (
   country VARCHAR(80) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS projects (
+CREATE TABLE IF NOT EXISTS loans (
   id SERIAL PRIMARY KEY,
   loanAmount MONEY NOT NULL,
   loanLength VARCHAR(40) NOT NULL,
@@ -29,3 +29,9 @@ CREATE TABLE IF NOT EXISTS investments (
   project_Id INTEGER REFERENCES projects(id),
   borrowers_id INTEGER REFERENCES borrowers(id)
 );
+
+
+
+
+
+
