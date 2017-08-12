@@ -40,8 +40,8 @@ export default function reducer(state = initialState, action){
 // Pull the user from the database 
 
 export function getLender(){
-  let promise = axios.get('/api/Profile').then(res => res.data);
-  // console.log(promise);
+  let promise = axios.get('/api/profile').then(res => res.data);
+  console.log("Console line 44 reducer.js getLender:", promise);
   return {
     type: GET_LENDER,
     payload: promise
@@ -55,7 +55,6 @@ export function getLoans(){
   // let promise = axios.get('http://api.kivaws.org/v1/loans/newest.json').then(res => res.data)
   // console.log(promise);
   let promise = newest;
-  console.log(promise.loans);
   return {
     type: GET_LOANS,
     payload: promise

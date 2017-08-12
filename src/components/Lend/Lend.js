@@ -14,9 +14,8 @@ class Lend extends React.Component {
   }
 
   render(){
-    console.log(this.props)
     return(
-      <Grid className="Lend" fluid='false'>
+      <Grid className="Lend" fluid="false">
         <Row>
           <Col lg={2}>
             <h1>Menu</h1>
@@ -51,7 +50,7 @@ class Lend extends React.Component {
                     </Card.Content>
                     <Card.Content extra>
                       <div className="ui two buttons">
-                        <Button onClick = { () => this.props.addToCart({ loanid: loan.id, amount: 25}) }basic color="green">Lend $25</Button>
+                        <Button onClick = { () => this.props.addToCart({ loanid: loan.id, amount: 25}) } basic color="green">Lend $25</Button>
                         <Button basic color="green">Learn More</Button>
                       </div>
                     </Card.Content>
@@ -69,8 +68,7 @@ class Lend extends React.Component {
 
 function mapStateToProps(state){
   return {
-    loans: state.loans,
-    cart: state.cart
+    loans: state.loans
   }
 }
 

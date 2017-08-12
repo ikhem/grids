@@ -24,7 +24,7 @@ export default function Landing(){
             <p><span className="title">Get repaid</span></p>
             <p>Receive updates on your loans and see the dollars return to your Kiva account.</p>
 
-            <a href="#">Learn more about how Kiva works</a>
+            <a href="/about/how">Learn more about how Kiva works</a>
           </Row>
           <Row className="Accolades">
             <Col lg={3} sm={6}><p>97.0%<br/><span className="desc">Loan repayment rate</span></p></Col>

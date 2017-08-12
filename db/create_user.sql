@@ -1,1 +1,1 @@
-INSERT INTO lenders (authId, email, firstname, lastname, profileName) VALUES ($1, $2, $3, $4, $5);
+INSERT INTO lenders (authId, profileName, firstName, lastName, email, picture) VALUES ($1, $2, $3, $4, $5, $6);
