@@ -18,6 +18,18 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// Check for Sessions
+app.use(function(req, res, next){
+
+  if( !req.session.cart && !req.user ){
+    req.session.cart = []
+  }
+
+  console.log("session.cart: ", session.cart);
+  // console.log("Console Line 27:", req.session.user)
+  next();
+})
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -46,12 +58,14 @@ passport.use(new Auth0Strategy({
     if(!user.length){
       db.create_user([authId, nickname, givenName, familyName, email, picture])
       .then((userCreated) => {
+        console.log("Console Line 49 server.js user:", user)
         return done(null, profile) // Go to serialize user when done is invoked
       }).catch( (e) => console.log(e))
     } else {
       // user[0].cart = [];
-      console.log("Console from line 47 server.js user:", user);
-      return done(null, profile);
+      console.log("Console Line 54 server.js user: ", user[0]);
+      // return done(null, profile);
+      return done(null, user[0]);
       // return done(null, user[0]);  Go to serialize user when done is invoked
     }
   }).catch(err => console.log('check failed', err));
@@ -61,9 +75,8 @@ app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http://localhost:3000/Profile'}));
 
 passport.serializeUser(function(profileToSession, done) {
-  console.log("Profile To Session", profileToSession);
-  //Add
-  profileToSession.cart = [];
+  console.log("Profile To Session: ", profileToSession);
+  // profileToSession.cart = [];
   done(null, profileToSession); // Puts second argument on session (profile)
 });
 
@@ -77,8 +90,11 @@ app.get('/me', function(req, res){
 })
 
 app.get('/api/profile', function(req, res){
-  console.log("Console from line 67 server.js req.user:", req.user)
-  res.send(req.user)
+  console.log("Console from line 93 server.js req.user:", req.user)
+  let user = Object.assign(req.user, { cart: req.session.cart });
+  console.log("kart:", user);
+  res.send(user);
+  // res.send(req.user)
 })
 
 app.get('/api/signout', function(req, res){
@@ -86,16 +102,22 @@ app.get('/api/signout', function(req, res){
   res.status(200).redirect('http://localhost:3000/');
 })
 
-// app.get('/api/loans', (req, res) =>{
-//   const db = req.app.get('db');
+// app.get('/api/GetCart', (req, res) =>{
+//   console.log("Console Line 92 cart: ", req.user.cart);
+//   res.status(200).send(req.user.cart)
+// //   const db = req.app.get('db');
 // })
 
-// app.post('/api/checkout', (req, res) =>{
-//   console.log("Console from line 81 req.body:", req.body);
-//   req.user.cart.push(req.body)
-//   console.log("Console from line 83 req.user:", req.user);
-//   res.status(200).send(req.user.cart)
-// })
+app.post('/api/AddedToCart', (req, res) =>{
+  // console.log("Console from line 98 req.body:", req.body);
+  // req.user.cart.push(req.body)
+  // console.log("Console from line 100 req.user:", req.user);
+  // res.status(200).send(req.user.cart)
+  req.session.cart.push(req.body);
+  console.log("Console req.cart", req.session.cart);
+  // console.log("Console line 118 req.cart: ", req.cart)
+  res.status(200).send(req.session.cart);
+})
 
 app.get('/favorites', function(req, res){
   if(!req.user){

@@ -1,3 +1,5 @@
+-- Create tables in database
+
 CREATE TABLE IF NOT EXISTS lenders (
   id SERIAL PRIMARY KEY,
   authId TEXT NOT NULL,
@@ -20,8 +22,8 @@ CREATE TABLE IF NOT EXISTS loans (
   id SERIAL PRIMARY KEY,
   borrower_id INTEGER REFERENCES borrowers(id),
   status TEXT,
-  funded_amount MONEY,
-  loan_amount MONEY,
+  funded_amount DECIMAL,
+  loan_amount DECIMAL,
   purpous TEXT,
   category TEXT,
   lender_count INTEGER,
@@ -33,16 +35,20 @@ CREATE TABLE IF NOT EXISTS transactions (
   id SERIAL PRIMARY KEY,
   lender_id INTEGER REFERENCES lenders(id),
   loan_id INTEGER REFERENCES loans(id),
-  amount MONEY NOT NULL
+  amount DECIMAL NOT NULL
 );
+
+-- Drop all tables from database in this order only
+
+-- DROP TABLE IF EXISTS transactions;
+
+-- DROP TABLE IF EXISTS loans;
 
 -- DROP TABLE IF EXISTS lenders;
 
 -- DROP TABLE IF EXISTS borrowers;
 
--- DROP TABLE IF EXISTS transactions;
 
--- DROP TABLE IF EXISTS loans;
 
 
 

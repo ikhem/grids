@@ -9,10 +9,11 @@ class Navigation extends React.Component {
 
   componentDidMount(){
     this.props.getLender();
-    this.props.getCart();
   }
 
   render() {
+    // console.log("Cart: ", this.props.cart);
+    // console.log("Cart.Length", this.props.cart[0].length);
   return (
     <Navbar>
       <Nav>
@@ -59,7 +60,7 @@ class Navigation extends React.Component {
         }       
 
         {
-          this.props.user ? 
+          this.props.user.authid ? 
           <Nav>
             <NavDropdown title="Profile">
               <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
@@ -86,4 +87,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getLender, getCart })(Navigation);
+export default connect(mapStateToProps, { getLender })(Navigation);

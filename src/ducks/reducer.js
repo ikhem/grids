@@ -14,12 +14,14 @@ const GET_LOANS = "GET_LOANS";
 const ADD_TO_CART = "ADD_TO_CART";
 const GET_CART = "GET_CART";
 
+const ADD_TO_CART_FRONT_END = "ADD_TO_CART_FRONT_END";
+
 export default function reducer(state = initialState, action){
   switch(action.type) {
     case GET_LENDER + '_PENDING':
       return Object.assign({}, state, { loading: true });
     case GET_LENDER + '_FULFILLED':
-      // console.log("Got User")
+      console.log(action.payload)
       return Object.assign({}, state, { loading: false, user: action.payload });
     // case GET_LOANS + '_PENDING':
     //   return Object.assign({}, state, {loading: true});
@@ -27,11 +29,14 @@ export default function reducer(state = initialState, action){
     //   return Object.assign({}, state, { loans: action.payload })
     case GET_LOANS:
       return Object.assign({}, state, { loans: action.payload})
-    case GET_CART:
-      return Object.assign({}, state, { cart: action.payload })
+    // case GET_CART + '_FULFILLED':
+    //   console.log("cart : ", action.payload)
+    //   return Object.assign({}, state, { cart: action.payload })
     case ADD_TO_CART + '_FULFILLED':
-      console.log(action.payload.data)
-      return Object.assign({}, state, { cart: [action.payload.data] })
+      console.log("cart : ", action.payload.data[0])
+      return Object.assign({}, state, { cart: action.payload.data[0] })
+    case ADD_TO_CART_FRONT_END:
+      return Object.assign({}, state, { cart: [...state.cart, action.payload] })
     default:
       return state;
   }
@@ -41,7 +46,7 @@ export default function reducer(state = initialState, action){
 
 export function getLender(){
   let promise = axios.get('/api/profile').then(res => res.data);
-  console.log("Console line 44 reducer.js getLender:", promise);
+  // console.log("Console line 44 reducer.js getLender:", promise);
   return {
     type: GET_LENDER,
     payload: promise
@@ -64,13 +69,22 @@ export function getLoans(){
 export function getCart(){
   return {
     type: GET_CART,
-    payload: []
+    payload: axios.get('/api/GetCart')
   }
 }
 
 export function addToCart( project ) {
   return {
     type: ADD_TO_CART,
-    payload: axios.post('/api/checkout/', project )
+    payload: axios.post('/api/AddedToCart/', project )
+  }
+}
+
+//implement addToCart client side
+export function addToCartFrontEnd( project ) {
+  // localstorage
+  return {
+    type: ADD_TO_CART_FRONT_END,
+    payload: project
   }
 }
