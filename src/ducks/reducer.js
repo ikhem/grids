@@ -28,12 +28,13 @@ export default function reducer(state = initialState, action){
     // case GET_LOANS + '_PENDING':
     //   return Object.assign({}, state, {loading: true});
     // case GET_LOANS + '_FULFILLED':
+    //   console.log("GET_LOANS_REDUCER: ", action.payload);
     //   return Object.assign({}, state, { loans: action.payload })
     case GET_LOANS:
       return Object.assign({}, state, { loans: action.payload})
-    // case GET_CART + '_FULFILLED':
-    //   console.log("cart : ", action.payload)
-    //   return Object.assign({}, state, { cart: action.payload })
+    case GET_CART + '_FULFILLED':
+      console.log("cart : ", action.payload)
+      return Object.assign({}, state, { cart: action.payload })
     case ADD_TO_CART + '_FULFILLED':
       console.log("ADD_TO_Cart : ", action.payload.data)
       return Object.assign({}, state, { user: action.payload.data });
