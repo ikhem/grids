@@ -2,8 +2,10 @@ import axios from 'axios';
 import newest from './newest.json';
 
 const initialState = {
-  user: {},
-  cart: [],
+  user: {
+    cart: []
+  },
+  // cart: [],
   total: 0,
   loans: null,
   loading: true,
@@ -21,7 +23,7 @@ export default function reducer(state = initialState, action){
     case GET_LENDER + '_PENDING':
       return Object.assign({}, state, { loading: true });
     case GET_LENDER + '_FULFILLED':
-      console.log(action.payload)
+      console.log("GET_LENDER: ", action.payload)
       return Object.assign({}, state, { loading: false, user: action.payload });
     // case GET_LOANS + '_PENDING':
     //   return Object.assign({}, state, {loading: true});
@@ -33,10 +35,11 @@ export default function reducer(state = initialState, action){
     //   console.log("cart : ", action.payload)
     //   return Object.assign({}, state, { cart: action.payload })
     case ADD_TO_CART + '_FULFILLED':
-      console.log("cart : ", action.payload.data[0])
-      return Object.assign({}, state, { cart: action.payload.data[0] })
+      console.log("ADD_TO_Cart : ", action.payload.data)
+      return Object.assign({}, state, { user: action.payload.data });
+      // return Object.assign({}, state.user, { cart: [...state.cart, action.payload.data[0]] })
     case ADD_TO_CART_FRONT_END:
-      return Object.assign({}, state, { cart: [...state.cart, action.payload] })
+      return Object.assign({}, state.user, { cart: [...state.cart, action.payload] })
     default:
       return state;
   }

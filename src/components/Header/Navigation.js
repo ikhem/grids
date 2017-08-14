@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLender, getCart } from '../../ducks/reducer';
+import { getLender } from '../../ducks/reducer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
@@ -12,7 +12,7 @@ class Navigation extends React.Component {
   }
 
   render() {
-    // console.log("Cart: ", this.props.cart);
+    console.log("Cart: ", this.props.user.cart.length);
     // console.log("Cart.Length", this.props.cart[0].length);
   return (
     <Navbar>
@@ -46,8 +46,8 @@ class Navigation extends React.Component {
       </Nav>
       <Nav pullRight>
         {
-          this.props.cart.length > 0 ?
-          <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
+          this.props.user.cart.length > 0 ?
+          <NavItem><Link to="/Basket">{this.props.user.cart.length} Basket</Link></NavItem> :
           <NavDropdown title="About">
             <MenuItem>About Us</MenuItem>
             <MenuItem>How Kiva Works</MenuItem>
@@ -83,7 +83,7 @@ class Navigation extends React.Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    cart: state.cart
+    // cart: state.cart
   }
 }
 

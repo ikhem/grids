@@ -20,12 +20,15 @@ app.use(session({
 
 // Check for Sessions
 app.use(function(req, res, next){
+  console.log("Beginning of middleware: ", req.session);
 
-  if( !req.session.cart && !req.user ){
-    req.session.cart = []
+  // req.session.user.cart = []
+  if( !req.session.user ){
+    req.session.user = { cart : [] }
   }
 
-  console.log("session.cart: ", session.cart);
+  console.log("From middleware req.session:", req.session.user);
+  // console.log("session.cart: ", req.session.user.cart);
   // console.log("Console Line 27:", req.session.user)
   next();
 })
@@ -75,8 +78,8 @@ app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http://localhost:3000/Profile'}));
 
 passport.serializeUser(function(profileToSession, done) {
-  console.log("Profile To Session: ", profileToSession);
-  // profileToSession.cart = [];
+  // console.log("Profile To Session: ", profileToSession);
+  console.log("Passport Serialize User: ", profileToSession);
   done(null, profileToSession); // Puts second argument on session (profile)
 });
 
@@ -90,10 +93,10 @@ app.get('/me', function(req, res){
 })
 
 app.get('/api/profile', function(req, res){
-  console.log("Console from line 93 server.js req.user:", req.user)
-  let user = Object.assign(req.user, { cart: req.session.cart });
+  console.log("Console from line 93 server.js req.user:", req.session.user)
+  let user = Object.assign(req.user, req.session.user );
   console.log("kart:", user);
-  res.send(user);
+  res.status(200).send(user);
   // res.send(req.user)
 })
 
@@ -113,10 +116,13 @@ app.post('/api/AddedToCart', (req, res) =>{
   // req.user.cart.push(req.body)
   // console.log("Console from line 100 req.user:", req.user);
   // res.status(200).send(req.user.cart)
-  req.session.cart.push(req.body);
-  console.log("Console req.cart", req.session.cart);
+  // console.log(req.body);
+  req.session.user.cart.push(req.body);
+  console.log("Session: ", req.session)
+  // req.session.cart.push(req.body);
+  // console.log("Console req.cart", req.session.cart);
   // console.log("Console line 118 req.cart: ", req.cart)
-  res.status(200).send(req.session.cart);
+  res.status(200).send(req.session.user);
 })
 
 app.get('/favorites', function(req, res){
