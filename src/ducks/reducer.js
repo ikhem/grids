@@ -3,7 +3,8 @@ import newest from './newest.json';
 
 const initialState = {
   user: {
-    cart: []
+    cart: [],
+    total: 0
   },
   // cart: [],
   total: 0,
@@ -37,10 +38,8 @@ export default function reducer(state = initialState, action){
       return Object.assign({}, state, { cart: action.payload })
     case ADD_TO_CART + '_FULFILLED':
       console.log("ADD_TO_Cart : ", action.payload.data)
+      // console.log("Total:", action.payload.cart.total)
       return Object.assign({}, state, { user: action.payload.data });
-      // return Object.assign({}, state.user, { cart: [...state.cart, action.payload.data[0]] })
-    case ADD_TO_CART_FRONT_END:
-      return Object.assign({}, state.user, { cart: [...state.cart, action.payload] })
     default:
       return state;
   }
@@ -81,14 +80,5 @@ export function addToCart( project ) {
   return {
     type: ADD_TO_CART,
     payload: axios.post('/api/AddedToCart/', project )
-  }
-}
-
-//implement addToCart client side
-export function addToCartFrontEnd( project ) {
-  // localstorage
-  return {
-    type: ADD_TO_CART_FRONT_END,
-    payload: project
   }
 }

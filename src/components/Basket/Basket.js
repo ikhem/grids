@@ -3,7 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getLoans } from '../../ducks/reducer';
-// import { Image } from 'semantic-ui-react';
+import { Well, Image } from 'react-bootstrap';
 
 import './Basket.css';
 
@@ -15,11 +15,9 @@ class Basket extends React.Component {
 
   render(){
     console.log("From Basket: ", this.props.user.cart)
-    // console.log("From Loans: ", this.props.loans)
-    // console.log("From Loans: ", this.props.loans.loans)
+    console.log("Total: ", this.props.total);
     const { cart } = this.props.user;
-    // const { loans } = this.props.loans;
-          let res = []
+    var res = []
     if(this.props.loans) {
 
       console.log("From Loans:", this.props.loans)
@@ -32,22 +30,31 @@ class Basket extends React.Component {
       })
     }
 
-    // console.log(res);
+    console.log("Result:", res);
 
     return(
       <Grid className="Basket">
         {
+          res.map(loan => 
+          <Well>
+            <Image src={`http://www.kiva.org/img/h300w480/${loan.image.id}.jpg`} width={150} />
+            <p>{loan.name}</p>
+            <p>{loan.location.country}</p>
+            <a href="">Remove</a>
+          </Well>)
+        }
+        {
           this.props.user.cart.length ?
           <Row>
             <Col lg={12}>
-             {/* {JSON.stringify(this.props.loans)}  */}
-              {JSON.stringify(res)}  
+              <p>Order Total:</p>{this.props.total}
+              <p>Total due:</p>{this.props.total}
             </Col>
           </Row> :
           <Row>
             <Col lg={12}>
               <p>Your basket is empty, but we'd love to help you find a borrower to support.</p> 
-             <Link to="#">Browse by category</Link> <Link to="/Lend">see all loans</Link>   
+             <Link to="#">Browse by category</Link> or <Link to="/Lend">see all loans</Link>   
             </Col>
           </Row>
         }
@@ -59,7 +66,8 @@ class Basket extends React.Component {
 function mapStateToProps(state){
   return {
     user: state.user,
-    loans: state.loans
+    loans: state.loans,
+    total: state.total
   }
 }
 

@@ -24,7 +24,7 @@ app.use(function(req, res, next){
 
   // req.session.user.cart = []
   if( !req.session.user ){
-    req.session.user = { cart : [] }
+    req.session.user = { cart : [], total : 1 }
   }
 
   console.log("From middleware req.session:", req.session.user);
@@ -112,16 +112,11 @@ app.get('/api/signout', function(req, res){
 // })
 
 app.post('/api/AddedToCart', (req, res) =>{
-  // console.log("Console from line 98 req.body:", req.body);
-  // req.user.cart.push(req.body)
-  // console.log("Console from line 100 req.user:", req.user);
-  // res.status(200).send(req.user.cart)
-  // console.log(req.body);
+  let total = req.session.user.cart.length * 25;
+  req.session.user.total = total;
   req.session.user.cart.push(req.body);
   console.log("Session: ", req.session)
-  // req.session.cart.push(req.body);
-  // console.log("Console req.cart", req.session.cart);
-  // console.log("Console line 118 req.cart: ", req.cart)
+  console.log("Total:", req.session.user.cart.length)
   res.status(200).send(req.session.user);
 })
 
