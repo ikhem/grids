@@ -2,8 +2,8 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getLoans } from '../../ducks/reducer';
-import { Well, Image } from 'react-bootstrap';
+import { getLoans, removeFromCart } from '../../ducks/reducer';
+import { Well, Image, Button } from 'react-bootstrap';
 
 import './Basket.css';
 
@@ -14,8 +14,8 @@ class Basket extends React.Component {
   }
 
   render(){
-    console.log("From Basket: ", this.props.user.cart)
-    console.log("Total: ", this.props.total);
+    // console.log("From Basket: ", this.props.user.cart)
+    // console.log("Total: ", this.props.total);
     const { cart } = this.props.user;
     var res = []
     if(this.props.loans) {
@@ -30,25 +30,29 @@ class Basket extends React.Component {
       })
     }
 
-    console.log("Result:", res);
+    // console.log("Result:", res);
+    // console.log("Item Count: ", cart.length)
+    // console.log("Total: ", cart.length*25)
 
     return(
       <Grid className="Basket">
         {
+          <Row>{
           res.map(loan => 
           <Well>
             <Image src={`http://www.kiva.org/img/h300w480/${loan.image.id}.jpg`} width={150} />
             <p>{loan.name}</p>
             <p>{loan.location.country}</p>
-            <a href="">Remove</a>
+            <Button onClick={ () => this.props.removeFromCart(loan.id) }>Remove</Button>
           </Well>)
+        }</Row>
         }
         {
           this.props.user.cart.length ?
           <Row>
             <Col lg={12}>
-              <p>Order Total:</p>{this.props.total}
-              <p>Total due:</p>{this.props.total}
+              <p>Order Total:</p>{25 * cart.length}
+              <p>Total due:</p>
             </Col>
           </Row> :
           <Row>
@@ -67,8 +71,7 @@ function mapStateToProps(state){
   return {
     user: state.user,
     loans: state.loans,
-    total: state.total
   }
 }
 
-export default connect(mapStateToProps, { getLoans })(Basket);
+export default connect(mapStateToProps, { getLoans, removeFromCart })(Basket);

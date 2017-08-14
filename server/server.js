@@ -24,7 +24,7 @@ app.use(function(req, res, next){
 
   // req.session.user.cart = []
   if( !req.session.user ){
-    req.session.user = { cart : [], total : 1 }
+    req.session.user = { cart : [] }
   }
 
   console.log("From middleware req.session:", req.session.user);
@@ -92,6 +92,8 @@ app.get('/me', function(req, res){
   res.send(req.user)
 })
 
+// Get user on session
+
 app.get('/api/profile', function(req, res){
   console.log("Console from line 93 server.js req.user:", req.session.user)
   let user = Object.assign(req.user, req.session.user );
@@ -100,35 +102,36 @@ app.get('/api/profile', function(req, res){
   // res.send(req.user)
 })
 
+// Sign user out of session
+
 app.get('/api/signout', function(req, res){
   req.logout();
   res.status(200).redirect('http://localhost:3000/');
 })
 
-// app.get('/api/GetCart', (req, res) =>{
-//   console.log("Console Line 92 cart: ", req.user.cart);
-//   res.status(200).send(req.user.cart)
-// //   const db = req.app.get('db');
-// })
+// Add item to cart
 
-app.post('/api/AddedToCart', (req, res) =>{
-  let total = req.session.user.cart.length * 25;
-  req.session.user.total = total;
+app.post('/api/cart', (req, res) =>{
   req.session.user.cart.push(req.body);
-  console.log("Session: ", req.session)
-  console.log("Total:", req.session.user.cart.length)
   res.status(200).send(req.session.user);
 })
 
-app.get('/favorites', function(req, res){
-  if(!req.user){
-    res.send([])
-  }
+// Remove item from cart
 
-  var id = req.user.id;
-  db.getFavorites([id], function(data){
+app.delete('/api/cart', (req, res) =>{
+  console.log("Delete: ", req.query.id);
+  // console.log("req.session.cart: ", req.session.user.cart)
+  const { id } = req.query;
+  const { cart } = req.session.user;
+  console.log("req.session.cart: ", cart)
 
+  let newCart = cart.filter(items => {
+    return items.loanid != id
   })
+
+  console.log("New Cart: ", newCart);
+
+  res.status(200).send(newCart);
 })
 
 const port = 3001;

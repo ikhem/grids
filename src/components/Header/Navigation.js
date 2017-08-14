@@ -12,8 +12,6 @@ class Navigation extends React.Component {
   }
 
   render() {
-    console.log("Cart: ", this.props.user.cart.length);
-    // console.log("Cart.Length", this.props.cart[0].length);
   return (
     <Navbar>
       <Nav>
