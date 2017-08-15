@@ -52,7 +52,7 @@ export default function reducer(state = initialState, action){
         return loan
       });
       console.log("Loan:", loan);
-      return Object.assign({}, state, {user:{cart:loan}})
+      return Object.assign({}, state, {user:{cart:loan, total: state.total+=action.payload.amount}})
     default:
       return state;
   }
