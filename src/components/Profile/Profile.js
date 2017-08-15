@@ -16,10 +16,10 @@ class Profile extends React.Component {
     return (
       <Grid className="profile" fluid="false">
         <Row>
-          <Col lg={6}>
+          {/* <Col lg={6}>
   
-          </Col>
-          <Col lg={6}>
+          </Col> */}
+          <Col lg={12}>
             {JSON.stringify(this.props.user)}
             {this.props.loading ? <h1>Loading</h1> : 
             <div>

@@ -113,6 +113,7 @@ app.get('/api/signout', function(req, res){
 
 app.post('/api/cart', (req, res) =>{
   req.session.user.cart.push(req.body);
+  console.log("Console server.js line 116:", req.session.user)
   res.status(200).send(req.session.user);
 })
 
@@ -126,7 +127,7 @@ app.delete('/api/cart', (req, res) =>{
   console.log("req.session.cart: ", cart)
 
   let newCart = cart.filter(items => {
-    return items.loanid != id
+    return items.id != id
   })
 
   console.log("New Cart: ", newCart);

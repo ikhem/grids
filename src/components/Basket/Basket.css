@@ -1,3 +1,20 @@
 .Basket {
   min-height: 800px;
 }
+
+.title {
+  color: green;
+}
+
+/* .well {
+  padding: 8px;
+  border: none;
+} */
+
+/* .ui.card, .ui.cards>.card {
+  -webkit-box-orient: horizontal;
+} */
+
+.ui.selection.dropdown>.delete.icon, .ui.selection.dropdown>.dropdown.icon, .ui.selection.dropdown>.search.icon {
+  border: none;
+}

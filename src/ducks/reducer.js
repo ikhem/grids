@@ -38,7 +38,7 @@ export default function reducer(state = initialState, action){
     case REMOVE_FROM_CART + '_PENDING':
       return Object.assign({}, state, { loading: true })
     case REMOVE_FROM_CART + '_FULFILLED':
-      console.log("Cart back from server:", action.payload.data)
+      console.log("Cart back from server:", action.payload)
       return Object.assign({}, state, { user: action.payload.data });
     default:
       return state;

@@ -50,7 +50,7 @@ class Lend extends React.Component {
                     </Card.Content>
                     <Card.Content extra>
                       <div className="ui two buttons">
-                        <Button onClick = { () => this.props.addToCart({ loanid: loan.id, amount: 25}) } basic color="green">Lend $25</Button>
+                        <Button onClick = { () => this.props.addToCart(loan) } basic color="green">Lend $25</Button>
                         <Button basic color="green">Learn More</Button>
                       </div>
                     </Card.Content>
