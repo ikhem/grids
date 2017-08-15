@@ -6,20 +6,31 @@ const GET_LOANS = "GET_LOANS";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
+
 export default function reducer(state, action){
-  console.log( action.type)
   switch(action.type){
     case GET_LENDER + '_FULFILLED':
       return Object.assign({}, state, { user: action.payload })
     case GET_LOANS:
       return Object.assign({}, state, { loans: action.payload });
     case ADD_TO_CART:
-      console.log("Adding to Cart: ", action.payload);
-      return Object.assign({}, state, { cart: [...state.cart, action.payload.loan], total: state.total+=action.payload.amount} );
+      console.log("Action Payload: ", action.payload);
+      console.log("payload.loan:", action.payload.loan);
+      console.log("payload.total:", action.payload.amount);
+      // let total = 0;
+      // state.cart.map(item =>{
+      //   total = state.total + item.amount
+      // })
+      // console.log("total:", total);
+      // let amountToAdd = Number(state.total) + Number(action.payload.amount);
+      // return Object.assign({}, state, { cart: [...state.cart, action.payload.loan], total: amountToAdd});
+      return Object.assign({}, state, { cart: [...state.cart, action.payload]})
+      // return state;
     case REMOVE_FROM_CART:
+      let amountToSub = state.total - 25
       return Object.assign({}, state, { cart: state.cart.filter(item =>{
-        return item.id != action.payload
-      })})
+        return item.loan.id != action.payload
+      }), total: amountToSub})
     default:
     console.log( 'default')
       return state;

@@ -8,6 +8,13 @@ import { Step, Card, Menu, Dropdown } from 'semantic-ui-react';
 
 import './Basket.css';
 
+const options = [
+  { key: 25, text: '$25', value: 25},
+  { key: 50, text: '$50', value: 50},
+  { key: 75, text: '$75', value: 75},
+  { key: 100, text: '$100', value: 100}
+]
+
 class Basket extends React.Component {
 
   componentDidMount(){
@@ -17,6 +24,11 @@ class Basket extends React.Component {
   render(){
     let { cart } = this.props;
     console.log("cart: ", cart);
+    let total = 0;
+    
+    this.props.cart.map(item => {
+      total = total + Number(item.amount)
+    })
 
     return(
       <Grid className="Basket">
@@ -45,19 +57,20 @@ class Basket extends React.Component {
           cart.map(loan => {
             return(
               <Card fluid>
-                <Image src={`http://www.kiva.org/img/h300w480/${loan.image.id}.jpg`} width={150} />
+                <Image src={`http://www.kiva.org/img/h300w480/${loan.loan.image.id}.jpg`} width={150} />
                 <Card.Header>
-                  {loan.name}
+                  {loan.loan.name}
                 </Card.Header>
                 <Card.Meta>
-                   {loan.location.country} 
+                   {loan.loan.location.country} 
                 </Card.Meta>
                 <Card.Content extra>
-                  <a onClick={ () => this.props.removeFromCart(loan.id) }>Remove</a>
+                  <a onClick={ () => this.props.removeFromCart(loan.loan.id) }>Remove</a>
                 </Card.Content>
                 <Card.Content>
                   <Menu compact>
-                    <Button onClick={ () => this.props.fundLoan(loan.id,25)}>Fund $25</Button>
+                    <Dropdown text="Dropdown" options={options} simple item />
+                    {/* <Button onClick={ () => this.props.fundLoan(loan.id,25)}>Fund $25</Button> */}
                   </Menu>
                 </Card.Content>
               </Card>
@@ -65,8 +78,8 @@ class Basket extends React.Component {
           })
         } 
         <Well>
-          <p>Order total: {this.props.total}</p>
-          <p>Total due: {this.props.total}</p>
+          <p>Order total: {total}</p>
+          <p>Total due: {total}</p>
         </Well>
       </Grid>
     )

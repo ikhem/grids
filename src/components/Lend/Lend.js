@@ -14,7 +14,6 @@ class Lend extends React.Component {
   }
 
   render(){
-    console.log("this props:", this.props);
     return(
       <Grid className="Lend" fluid="false">
         <Row>
