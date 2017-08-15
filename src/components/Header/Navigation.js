@@ -44,8 +44,8 @@ class Navigation extends React.Component {
       </Nav>
       <Nav pullRight>
         {
-          this.props.user.cart.length > 0 ?
-          <NavItem><Link to="/Basket">{this.props.user.cart.length} Basket</Link></NavItem> :
+          this.props.cart.length > 0?
+          <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
           <NavDropdown title="About">
             <MenuItem>About Us</MenuItem>
             <MenuItem>How Kiva Works</MenuItem>
@@ -58,20 +58,20 @@ class Navigation extends React.Component {
         }       
 
         {
-          this.props.user.authid ? 
-          <Nav>
-            <NavDropdown title="Profile">
-              <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
-              <MenuItem>My teams</MenuItem>
-              <MenuItem>Donations</MenuItem>  
-              <MenuItem>Settings</MenuItem>   
-              <MenuItem divider />     
-              <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>
-            </NavDropdown>
-            <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem>
-          </Nav> :
-          <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
-        }
+        this.props.user.authid ? 
+        <Nav>
+          <NavDropdown title="Profile">
+            <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
+            <MenuItem>My teams</MenuItem>
+            <MenuItem>Donations</MenuItem>  
+            <MenuItem>Settings</MenuItem>   
+            <MenuItem divider />     
+            <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>
+          </NavDropdown>
+          <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem>
+        </Nav> : 
+        <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
+        }  
       </Nav> 
     </Navbar>
     );
@@ -81,6 +81,7 @@ class Navigation extends React.Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
+    cart: state.cart
   }
 }
 
