@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getLoans, removeFromCart } from '../../ducks/reducer';
+import { getLoans, removeFromCart, fundLoan } from '../../ducks/reducer';
 import { Well, Image, Button } from 'react-bootstrap';
 import { Step, Card, Menu, Dropdown } from 'semantic-ui-react';
 
@@ -17,21 +17,13 @@ const options = [
 
 class Basket extends React.Component {
 
-  constructor(props){
-    super(props)
-
-    this.state = {
-      total: 0
-    }
-  }
-
   componentDidMount(){
     this.props.getLoans();
   }
 
   setValue(e, data) {
     this.setState({
-      total: data.value
+      total: [...data.value]
     })
   }
 
@@ -71,20 +63,22 @@ class Basket extends React.Component {
                   {loan.name}
                 </Card.Header>
                 <Card.Meta>
-                  {loan.location.country}
+                  {/* {loan.location.country} */}
+                  Funded Amount: {loan.funded_amount}
                 </Card.Meta>
                 <Card.Content extra>
                   <a onClick={ () => this.props.removeFromCart(loan.id) }>Remove</a>
                 </Card.Content>
                 <Card.Content>
                   <Menu compact>
-                    <Dropdown 
-                      onChange={this.setValue.bind(this)}
+                    <Button onClick={ () => this.props.fundLoan(loan.id,25)} />
+                    {/* <Dropdown
+                      onChange={this.props.fundLoan(loan.id, 25)}
                       options={options}
                       placeholder="$25" 
                       search selection
-                      value={this.state.total}
-                    />
+                      value={this.props.total} 
+                    /> */}
                   </Menu>
                 </Card.Content>
               </Card>
@@ -92,8 +86,8 @@ class Basket extends React.Component {
           })
         }
         <Well>
-          <p>Order total: {this.state.total}</p>
-          <p>Total due: {this.state.total}</p>
+          <p>Order total: {this.props.total}</p>
+          <p>Total due: {this.props.total}</p>
         </Well>
       </Grid>
     )
@@ -104,7 +98,8 @@ function mapStateToProps(state){
   return {
     user: state.user,
     loans: state.loans,
+    total: state.total
   }
 }
 
-export default connect(mapStateToProps, { getLoans, removeFromCart })(Basket);
+export default connect(mapStateToProps, { getLoans, removeFromCart, fundLoan })(Basket);

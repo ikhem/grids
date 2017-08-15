@@ -16,6 +16,7 @@ const GET_USER = "GET_LENDER";
 const GET_LOANS = "GET_LOANS";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+const FUND_LOAN = "FUND_LOAN";
 
 export default function reducer(state = initialState, action){
   switch(action.type) {
@@ -34,12 +35,17 @@ export default function reducer(state = initialState, action){
     case ADD_TO_CART + '_PENDING':
       return Object.assign({}, state, { loading: true })
     case ADD_TO_CART + '_FULFILLED':
-      return Object.assign({}, state, { user: action.payload.data });
+      return Object.assign({}, state, { user: action.payload.data, total: state.total+= 25 });
     case REMOVE_FROM_CART + '_PENDING':
       return Object.assign({}, state, { loading: true })
     case REMOVE_FROM_CART + '_FULFILLED':
       console.log("Cart back from server:", action.payload)
       return Object.assign({}, state, { user: action.payload.data });
+    case FUND_LOAN:
+      console.log("Id to fund:", action.payload.id)
+      console.log("amount to fund:", action.payload.amount)
+      console.log("user state cart: ", state.user.cart)
+      return Object.assign({}, state)
     default:
       return state;
   }
@@ -82,5 +88,12 @@ export function removeFromCart( id ) {
     type: REMOVE_FROM_CART,
     // payload: axios.post('/api/RemoveFromCart/', project )
     payload: axios.delete(`/api/cart?id=${id}` )
+  }
+}
+
+export function fundLoan( id, amount ) {
+  return {
+    type: FUND_LOAN,
+    payload: { id, amount }
   }
 }
