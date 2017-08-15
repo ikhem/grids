@@ -71,7 +71,7 @@ class Basket extends React.Component {
                 </Card.Content>
                 <Card.Content>
                   <Menu compact>
-                    <Button onClick={ () => this.props.fundLoan(loan.id,25)} />
+                    <Button onClick={ () => this.props.fundLoan(loan.id,25)}>Fund $25</Button>
                     {/* <Dropdown
                       onChange={this.props.fundLoan(loan.id, 25)}
                       options={options}

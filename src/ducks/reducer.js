@@ -45,7 +45,14 @@ export default function reducer(state = initialState, action){
       console.log("Id to fund:", action.payload.id)
       console.log("amount to fund:", action.payload.amount)
       console.log("user state cart: ", state.user.cart)
-      return Object.assign({}, state)
+      let loan = state.user.cart.map(loan => {
+        if(loan.id === action.payload.id){
+          loan.funded_amount = action.payload.amount
+        }
+        return loan
+      });
+      console.log("Loan:", loan);
+      return Object.assign({}, state, {user:{cart:loan}})
     default:
       return state;
   }
