@@ -1,6 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
-import { getLender } from '../../ducks/reducer';
+import { getUser } from '../../ducks/reducer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
@@ -8,7 +9,12 @@ import './Navigation.css';
 class Navigation extends React.Component {
 
   componentDidMount(){
-    this.props.getLender();
+    this.props.getUser();
+  }
+
+  signOut(){
+    localStorage.clear();
+    axios.get('/api/signout');
   }
 
   render() {
@@ -61,17 +67,19 @@ class Navigation extends React.Component {
         this.props.user.authid ? 
         <Nav>
           <NavDropdown title="Profile">
-            <MenuItem><Link to="/Profile">Portfolio</Link></MenuItem>
+            <MenuItem><Link to="/Portfolio">Portfolio</Link></MenuItem>
             <MenuItem>My teams</MenuItem>
             <MenuItem>Donations</MenuItem>  
             <MenuItem>Settings</MenuItem>   
-            <MenuItem divider />     
-            <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>
+            <MenuItem divider />  
+             {/* <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>  */}
+             <MenuItem onClick={this.signOut.bind(this)}>Sign Out</MenuItem> 
           </NavDropdown>
           <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem>
         </Nav> : 
         <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
-        }  
+        }
+
       </Nav> 
     </Navbar>
     );
@@ -85,4 +93,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getLender })(Navigation);
+export default connect(mapStateToProps, { getUser })(Navigation);

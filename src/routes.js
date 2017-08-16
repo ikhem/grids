@@ -4,9 +4,10 @@ import { Route, Switch } from 'react-router-dom';
 import Navigation from './components/Header/Navigation';
 
 import Landing from './components/Landing/Landing';
-import Profile from './components/Profile/Profile';
+import Portfolio from './components/Portfolio/Portfolio';
 import Lend from './components/Lend/Lend';
 import Basket from './components/Basket/Basket';
+import Payment from './components/Payment/Payment';
 
 import Footer from './components/Footer/Footer';
 
@@ -15,9 +16,10 @@ export default(
     <Navigation />
     <Switch>
       <Route exact path="/" component={Landing} />
-      <Route path="/Profile" component={Profile} />
+      <Route path="/Portfolio" component={Portfolio} />
       <Route path="/Lend" component={Lend} />
       <Route path="/Basket" component={Basket} />
+      <Route path="/Payment" component={Payment} />
     </Switch>
     <Footer />
   </div>

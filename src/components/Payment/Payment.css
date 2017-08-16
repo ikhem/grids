@@ -1,0 +1,8 @@
+.Payment {
+  min-height: 800px;
+}
+
+.Payment p {
+  text-align: center;
+  font-size: 28px;
+}

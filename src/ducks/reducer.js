@@ -1,16 +1,20 @@
 import axios from 'axios';
 import newest from './newest.json';
 
-const GET_LENDER = "GET_LENDER";
+const GET_USER = "GET_USER";
 const GET_LOANS = "GET_LOANS";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const UPDATE_CART = "UPDATE_CART";
+// const SIGN_OUT = "SIGN_OUT";
 
 export default function reducer(state, action){
   switch(action.type){
-    case GET_LENDER + '_FULFILLED':
-      return Object.assign({}, state, { user: action.payload })
+    case GET_USER + '_PENDING':
+      return state;
+    case GET_USER + '_FULFILLED':
+      console.log("User going into state: ", action.payload.data);
+      return Object.assign({}, state, { user: action.payload.data })
     case GET_LOANS:
       return Object.assign({}, state, { loans: action.payload });
     case ADD_TO_CART:
@@ -41,15 +45,18 @@ export default function reducer(state, action){
       })
       console.log("New Cart: ", newCart)
       return Object.assign({}, state, { cart: newCart });
+    // case SIGN_OUT + '_FULFILLED':
+    //   localStorage.clear();
+    //   return Object.assign({}, state, {});
     default:
       return state;
   }
 }
 
-export function getLender(){
-  let promise = axios.get('/api/profile')
+export function getUser(){
+  let promise = axios.get('/api/portfolio')
   return{
-    type: GET_LENDER,
+    type: GET_USER,
     payload: promise
   }
 }
@@ -85,3 +92,12 @@ export function updateCart( id, amount ){
     payload: { id, amount }
   }
 }
+
+// export function signOut(){
+//   console.log("logout");
+//   let promise = axios.get('/api/signout')
+//   return{
+//     type: SIGN_OUT,
+//     payload: promise
+//   }
+// }

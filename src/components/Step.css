@@ -1,0 +1,17 @@
+.ui.steps .step.active {
+  background: #236133;
+}
+
+.ui.steps .step.active:after {
+  background: #236133;
+}
+
+.ui.steps .step.active .title {
+  color: white;
+}
+
+.well {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end
+}

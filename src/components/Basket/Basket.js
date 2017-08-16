@@ -1,12 +1,15 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getLoans, removeFromCart, updateCart } from '../../ducks/reducer';
+
+import { Grid, Row, Col } from 'react-bootstrap';
 import { Well, Image, Button } from 'react-bootstrap';
 import { Step, Card, Menu, Dropdown } from 'semantic-ui-react';
 
 import './Basket.css';
+import '../Step.css';
 
 const options = [
   { key: 25, text: '$25', value: 25},
@@ -80,7 +83,6 @@ class Basket extends React.Component {
                 <Card.Content>
                   <Menu compact>
                     <Dropdown placeholder="$25" closeOnChange={true} options={options} item onChange={(e, value)=>{this.setValue(loan.loan.id, value)}}/>
-                    {/* <Button onClick={ () => this.props.fundLoan(loan.id,25)}>Fund $25</Button> */}
                   </Menu>
                 </Card.Content>
               </Card>
@@ -88,10 +90,15 @@ class Basket extends React.Component {
           })
         } 
         <Well>
-          <p>Order total: {total}</p>
-          <p>Total due: {total}</p>
+          <p>Order total: ${total}</p>
+          <p>Total due: ${total}</p>
         </Well>
-        <Button bsSize="large" bsSize="primary">Continue</Button>
+        {
+          this.props.cart.length ?
+          <Button bsSize="large" bsSize="primary"><Link to="/Payment">Continue</Link></Button> :
+          null
+        }
+        <Link to="/Lend">Find more loans</Link>
       </Grid>
     )
   }

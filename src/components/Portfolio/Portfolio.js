@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getLender } from '../../ducks/reducer';
-import './Profile.css';
+import { getUser } from '../../ducks/reducer';
+import './Portfolio.css';
 
 import { Grid, Row, Col } from 'react-bootstrap';
 
-class Profile extends React.Component {
+class Portfolio extends React.Component {
 
   componentDidMount(){
-    this.props.getLender();
+    this.props.getUser();
   }
 
   render() {
@@ -23,8 +23,8 @@ class Profile extends React.Component {
             {JSON.stringify(this.props.user)}
             {this.props.loading ? <h1>Loading</h1> : 
             <div>
-              <p className="name">{this.props.user.displayName} </p>
-              {/* <img width={100} height={100} src= {this.props.user.picture} alt="profile_pic" /> */}
+              <p className="name">{`${this.props.user.firstname} ${this.props.user.lastname}`} </p>
+              {/* <img width={100} height={100} src= {this.props.user.picture} alt="profile_pic" />  */}
               <p>Outstanding Loans</p>
               <p>Available Kiva Credit</p>
               <button><Link to='/Lend'>Find a Loan</Link></button>
@@ -44,4 +44,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getLender })(Profile);
+export default connect(mapStateToProps, { getUser })(Portfolio);

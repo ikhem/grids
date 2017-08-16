@@ -5,18 +5,18 @@ import { loadState, saveState } from './localStorage';
 
 import reducer from './reducer';
 
+// Create an initial state from localstorage.js
+
 const persistedState = loadState()
 
-console.log("persistedState: ", persistedState);
+// Send in reducer, persistedState and promise middleware into store
 
 const store = createStore(reducer, persistedState, applyMiddleware( promiseMiddleware() ));
 
-console.log("store b4 subscribe:", store.getState());
-
 // Calls saveState whenever there's a state change
+
 store.subscribe(() => {
   saveState(store.getState());
-  // saveState(reducer);
 });
 
 console.log("store: ", store.getState());
