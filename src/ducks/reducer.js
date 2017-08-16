@@ -5,7 +5,7 @@ const GET_LENDER = "GET_LENDER";
 const GET_LOANS = "GET_LOANS";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-
+const UPDATE_CART = "UPDATE_CART";
 
 export default function reducer(state, action){
   switch(action.type){
@@ -27,12 +27,21 @@ export default function reducer(state, action){
       return Object.assign({}, state, { cart: [...state.cart, action.payload]})
       // return state;
     case REMOVE_FROM_CART:
-      let amountToSub = state.total - 25
       return Object.assign({}, state, { cart: state.cart.filter(item =>{
         return item.loan.id != action.payload
-      }), total: amountToSub})
+      })})
+    case UPDATE_CART:
+      console.log("id:", action.payload.id)
+      console.log("amount:", action.payload.amount)
+      let newCart = state.cart.map(item =>{
+        if(item.loan.id === action.payload.id){
+          item.amount = action.payload.amount
+        }
+        return item
+      })
+      console.log("New Cart: ", newCart)
+      return Object.assign({}, state, { cart: newCart });
     default:
-    console.log( 'default')
       return state;
   }
 }
@@ -63,8 +72,16 @@ export function addToCart( loan, amount ){
 
 export function removeFromCart( id ){
   console.log("item to remove:", id)
-  return{
+  return {
     type: REMOVE_FROM_CART,
     payload: id
+  }
+}
+
+export function updateCart( id, amount ){
+  console.log("A: ", amount)
+  return {
+    type: UPDATE_CART,
+    payload: { id, amount }
   }
 }

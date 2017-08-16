@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getLoans, removeFromCart } from '../../ducks/reducer';
+import { getLoans, removeFromCart, updateCart } from '../../ducks/reducer';
 import { Well, Image, Button } from 'react-bootstrap';
 import { Step, Card, Menu, Dropdown } from 'semantic-ui-react';
 
@@ -16,14 +16,26 @@ const options = [
 ]
 
 class Basket extends React.Component {
+  constructor(props){
+    super(props)
+
+    this.setValue = this.setValue.bind(this);
+  }
 
   componentDidMount(){
     this.props.getLoans();
   }
 
+  setValue(e, data) {
+    // console.log("e:", e)
+    // console.log("Data: ", data.value)
+    this.props.updateCart(e, data.value)
+  }
+
   render(){
     let { cart } = this.props;
     console.log("cart: ", cart);
+
     let total = 0;
     
     this.props.cart.map(item => {
@@ -69,7 +81,7 @@ class Basket extends React.Component {
                 </Card.Content>
                 <Card.Content>
                   <Menu compact>
-                    <Dropdown text="Dropdown" options={options} simple item />
+                    <Dropdown placeholder="$25" closeOnChange={true} options={options} item onChange={(e, value)=>{this.setValue(loan.loan.id, value)}}/>
                     {/* <Button onClick={ () => this.props.fundLoan(loan.id,25)}>Fund $25</Button> */}
                   </Menu>
                 </Card.Content>
@@ -91,8 +103,7 @@ function mapStateToProps(state){
     user: state.user,
     cart: state.cart,
     loans: state.loans,
-    total: state.total
   }
 }
 
-export default connect(mapStateToProps, { getLoans, removeFromCart })(Basket);
+export default connect(mapStateToProps, { getLoans, removeFromCart, updateCart })(Basket);
