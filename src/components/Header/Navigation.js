@@ -50,7 +50,7 @@ class Navigation extends React.Component {
       </Nav>
       <Nav pullRight>
         {
-          this.props.cart.length > 0?
+          this.props.cart.length > 0 ?
           <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
           <NavDropdown title="About">
             <MenuItem>About Us</MenuItem>

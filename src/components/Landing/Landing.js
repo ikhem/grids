@@ -13,16 +13,16 @@ export default function Landing(){
       </Row> */}
       <Row className="HowItWorks">
           <Row>
-            <p>How it works</p>
+            <p><span className="HIW">How it works</span></p>
             <p><span className="title">Choose a borrower</span></p>
-            <p>Browse categories of borrowers--people looking to grow businesses, go to school, switch to clean energy and more.</p>
+            <p><span className="description">Browse categories of borrowers--people looking to grow businesses, go to school, switch to clean energy and more.</span></p>
             <div className="repeat">
-            <p><span className="title">Repeat!</span><br/>Use the repayment to support another borrower, or withdraw your money.</p>
+            <p><span className="title">Repeat!</span><br/><span className="description">Use the repayment to support another borrower, or withdraw your money.</span></p>
             <img width={350} height={300} alt="Cycle" src={require("./HowItWorks.png")} />
-            <p><span className="title">Make a loan</span><br/>Select a borrower who you connect with and help fund a loan with as little as $25</p>
+            <p><span className="title">Make a loan</span><br/><span className="description">Select a borrower who you connect with and help fund a loan with as little as $25.</span></p>
             </div>
             <p><span className="title">Get repaid</span></p>
-            <p>Receive updates on your loans and see the dollars return to your Kiva account.</p>
+            <p><span className="description">Receive updates on your loans and see the dollars return to your Kiva account.</span></p>
 
             <a href="/about/how">Learn more about how Kiva works</a>
           </Row>
@@ -38,29 +38,31 @@ export default function Landing(){
               <br/><span className="desc">Charity Navigator's highest reward rating</span></p></Col>
           </Row>
       </Row>
+      <Grid>
       <Row className="StartLending">
         {/* <Col lg={12}> */}
         <span className="Start"><p>Start Lending</p></span>
         <p>Choose a category</p>
           <Row>
-          <Col lg={3} md={4} sm={6}><p><input /><br/>Search</p></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Women</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Agriculture</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Education</a></Col>
+          <Col lg={3} md={4} sm={6} className="Women"><p><input /><br/>Search</p></Col>
+          <Col lg={3} md={4} sm={6} className="Women" href=""><a href="">Women</a></Col>
+          <Col lg={3} md={4} sm={6} className="Agriculture" href=""><a href="">Agriculture</a></Col>
+          <Col lg={3} md={4} sm={6} className="Education" href=""><a href="">Education</a></Col>
 
-          <Col lg={3} md={4} sm={6}><a href="">Health</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Single Parents</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Refugees and IDPs</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Shelter</a></Col>
+          <Col lg={3} md={4} sm={6} className="Health" href=""><a href="">Health</a></Col>
+          <Col lg={3} md={4} sm={6} className="SingleParents" href=""><a href="">Single Parents</a></Col>
+          <Col lg={3} md={4} sm={6} className="Refugees" href=""><a href="">Refugees and IDPs</a></Col>
+          <Col lg={3} md={4} sm={6} className="Shelter" href=""><a href="">Shelter</a></Col>
       
-          <Col lg={3} md={4} sm={6}><a href="">Food</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Kiva U.S.</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">Expiring Soon</a></Col>
-          <Col lg={3} md={4} sm={6}><a href="">All Loans</a></Col>
+          <Col lg={3} md={4} sm={6} className="Food" href=""><a href="">Food</a></Col>
+          <Col lg={3} md={4} sm={6} className="KivaUSA" href=""><a href="">Kiva U.S.</a></Col>
+          <Col lg={3} md={4} sm={6} className="Expiring" href=""><a href="">Expiring Soon</a></Col>
+          <Col lg={3} md={4} sm={6} className="Expiring" href=""><a href="">All Loans</a></Col>
           </Row>
           {/* </Col> */}
       </Row>
-     
+      </Grid>
+
       <Row className="Social">
         <p>Follow us</p> 
         {/* <Col lg={2}>Facebook</Col>
