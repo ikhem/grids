@@ -44,7 +44,7 @@ class Payment extends React.Component {
       </Step.Group>
 
       {
-        this.props.cart ?
+        !this.props.cart ?
         <p>Your basket is empty.</p> :
         cart.map(loan => {
           return(

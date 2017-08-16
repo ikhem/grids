@@ -2,6 +2,10 @@
   min-height: 800px;
 }
 
+.Payment .title {
+  color: green;
+}
+
 .Payment p {
   text-align: center;
   font-size: 28px;
