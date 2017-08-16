@@ -10,3 +10,15 @@
   text-align: center;
   font-size: 28px;
 }
+
+.ui.table {
+  border: 0px;
+}
+
+.ui.fluid.steps {
+  margin-bottom: 0px;
+}
+
+.ui.table {
+  margin-top: 0px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getUser } from '../../ducks/reducer';
+import { getUser, loggedOut } from '../../ducks/reducer';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
@@ -14,10 +14,15 @@ class Navigation extends React.Component {
 
   signOut(){
     localStorage.clear();
-    axios.get('/api/signout');
+    axios.get('/api/signout').then(signoutRes => {
+      console.log(signoutRes, this.props)
+      this.props.loggedOut()//gonna remove auth id from state
+      this.props.history.push("/");
+    });
   }
 
   render() {
+    console.log(this.props)
   return (
     <Navbar>
       <Nav>
@@ -64,6 +69,7 @@ class Navigation extends React.Component {
         }       
 
         {
+
         this.props.user.authid ? 
         <Nav>
           <NavDropdown title="Profile">
@@ -93,4 +99,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getUser })(Navigation);
+export default connect(mapStateToProps, { getUser, loggedOut })(Navigation);

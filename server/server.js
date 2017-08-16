@@ -87,7 +87,28 @@ app.get('/api/portfolio', function(req, res){
 app.get('/api/signout', function(req, res){
   req.logout();
   console.log('signed out')
-  res.status(200).redirect('http://localhost:3000/');
+  res.status(200).send(true);
+})
+
+app.post('/api/checkout', function(req, res){
+  console.log("req.body", req.body)
+  console.log("req.user", req.user)
+
+  const elephantDb = req.app.get('db');
+
+  req.body.map(loan => {
+    // //Insert into the borrower table
+    // elephantDb.add_borrower([loan.loan.name, loan.loan.location.country, loan.loan.image.id]).then(borrower => console.log(borrower) )
+    // //Insert into the loan table
+    // elephantDb.add_loan([loan.loan.id, loan.loan.status, loan.loan.funded_amount, loan.loan.use, loan.loan.sector, loan.loan.posted_date, loan.loan.planned_expiration_date])
+    // //Insert into the transaction table
+
+    console.log("loan.id", loan.loan.id)
+    console.log("loan.name", loan.loan.name)
+    console.log("loan.status", loan.loan.status)
+  })
+
+  res.status(200)
 })
 
 // Add item to cart

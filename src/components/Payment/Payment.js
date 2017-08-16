@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { checkOut } from '../../ducks/reducer';
 
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Well, Button } from 'react-bootstrap';
@@ -11,7 +12,7 @@ import './Payment.css';
 class Payment extends React.Component {
   render(){
   let { cart } = this.props;
-  console.log("cart: ", cart);
+  console.log("cart: ", this.props);
 
   let total = 0;
   
@@ -78,7 +79,7 @@ class Payment extends React.Component {
         <p>Total due: {total}</p>
       </Well>
 
-      <Button bsSize="large" bsSize="primary">Continue</Button>
+      <Button bsSize="large" bsSize="primary" onClick={ () => this.props.checkOut( this.props.cart )} >Continue</Button>
     </Grid>
   )
   }
@@ -90,4 +91,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(Payment);
+export default connect(mapStateToProps, { checkOut })(Payment);

@@ -1,0 +1,1 @@
+INSERT INTO transactions (lender_id, loan_id, amount) VALUES ($1, $2, $3)

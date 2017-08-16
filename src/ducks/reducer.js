@@ -6,7 +6,9 @@ const GET_LOANS = "GET_LOANS";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const UPDATE_CART = "UPDATE_CART";
-// const SIGN_OUT = "SIGN_OUT";
+const CHECK_OUT = "CHECK_OUT";
+const LOGGED_OUT = "LOGGED_OUT";
+const SIGN_OUT = "SIGN_OUT";
 
 export default function reducer(state, action){
   switch(action.type){
@@ -45,9 +47,15 @@ export default function reducer(state, action){
       })
       console.log("New Cart: ", newCart)
       return Object.assign({}, state, { cart: newCart });
-    // case SIGN_OUT + '_FULFILLED':
-    //   localStorage.clear();
-    //   return Object.assign({}, state, {});
+    case SIGN_OUT + '_FULFILLED':
+      // localStorage.clear();
+      return Object.assign({}, state, {});
+      case CHECK_OUT + '_PENDING':
+        return state;
+      case CHECK_OUT + '_FULFILLED':  
+        return Object.assign({}, state, { cart: []} )
+      case LOGGED_OUT:
+        return Object.assign({}, state, { user: action.payload, cart: [] })
     default:
       return state;
   }
@@ -93,11 +101,26 @@ export function updateCart( id, amount ){
   }
 }
 
-// export function signOut(){
-//   console.log("logout");
-//   let promise = axios.get('/api/signout')
-//   return{
-//     type: SIGN_OUT,
-//     payload: promise
-//   }
-// }
+export function signOut(){
+  console.log("logout");
+  let promise = axios.get('/api/signout')
+  return{
+    type: SIGN_OUT,
+    payload: promise
+  }
+}
+
+export function checkOut( cart ){
+  console.log("State.Cart", cart)
+  return {
+    type: CHECK_OUT,
+    payload: axios.post('/api/checkout', cart)
+  }
+}
+
+export function loggedOut(){
+  return {
+    type: LOGGED_OUT,
+    payload: {}
+  }
+}

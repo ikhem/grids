@@ -95,7 +95,7 @@ class Basket extends React.Component {
         </Well>
         {
           this.props.cart.length ?
-          <Button bsSize="large" bsSize="primary"><Link to="/Payment">Continue</Link></Button> :
+          <Button bsSize="large" bsSize="primary"><Link to="/Payment" onClick={this.loggedIn}>Continue</Link></Button> :
           null
         }
         <Link to="/Lend">Find more loans</Link>
@@ -108,7 +108,7 @@ function mapStateToProps(state){
   return {
     user: state.user,
     cart: state.cart,
-    loans: state.loans,
+    // loans: state.loans,
   }
 }
 
