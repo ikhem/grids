@@ -44,7 +44,7 @@ export default function Landing(){
         <span className="Start"><p>Start Lending</p></span>
         <p>Choose a category</p>
           <Row>
-          <Col lg={3} md={4} sm={6} className="Women"><p><input /><br/>Search</p></Col>
+          <Col lg={3} md={4} sm={6} className="Search"><p><input /><br/>Search</p></Col>
           <Col lg={3} md={4} sm={6} className="Women" href=""><a href="">Women</a></Col>
           <Col lg={3} md={4} sm={6} className="Agriculture" href=""><a href="">Agriculture</a></Col>
           <Col lg={3} md={4} sm={6} className="Education" href=""><a href="">Education</a></Col>
@@ -57,7 +57,7 @@ export default function Landing(){
           <Col lg={3} md={4} sm={6} className="Food" href=""><a href="">Food</a></Col>
           <Col lg={3} md={4} sm={6} className="KivaUSA" href=""><a href="">Kiva U.S.</a></Col>
           <Col lg={3} md={4} sm={6} className="Expiring" href=""><a href="">Expiring Soon</a></Col>
-          <Col lg={3} md={4} sm={6} className="Expiring" href=""><a href="">All Loans</a></Col>
+          <Col lg={3} md={4} sm={6} className="All" href=""><a href="">All Loans</a></Col>
           </Row>
           {/* </Col> */}
       </Row>

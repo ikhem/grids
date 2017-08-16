@@ -106,7 +106,17 @@
 }
 
 /* Categories */
-
+.Search {
+  background-color: rgb(38, 182, 232);
+  background-size: cover;
+  max-width: 100%;
+  height: 140px;
+  width: 275px;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
 .Women {
   background-image: url('./category/Women.jpg');
   background-size: cover;
@@ -208,9 +218,21 @@
 }
 .Expiring {
   background-image: url('./category/ExpiringSoon.jpg');
+  background-color: #63a541;
   background-size: cover;
   max-width: 100%;
-   height: 140px;
+  height: 140px;
+  width: 275px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.All {
+  background-color: #63a541;
+  background-size: cover;
+  max-width: 100%;
+  height: 140px;
   width: 275px;
   display: flex;
   justify-content: center;
@@ -221,6 +243,12 @@
 .StartLending a {
   color: white;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 28px;
+}
+
+.StartLending p {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 
