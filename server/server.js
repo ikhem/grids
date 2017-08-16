@@ -71,6 +71,22 @@ app.get('/me', function(req, res){
   res.send(req.user)
 })
 
+app.post('/api/populateLoans', function(req, res){
+  console.log("req.body popLoans", req.body.loans)
+
+  const db = req.app.get('db');
+
+  // req.body.loans.map(loan => {
+  //   db.add_borrower([loan.name, loan.location.country, loan.image.id]).then( bor_id => db.add_loan([bor_id, loan.status, loan.funded_amount, loan.loan_amount, loan.use, loan.sector, loan.posted_date, loan.planned_expiration_date]))
+  // })
+
+  req.body.loans.map(loan => {
+    db.add_borrower([loan.name, loan.location.country, loan.image.id])
+  })
+
+  res.status(200).send(req.body)
+})
+
 // Get user on session
 
 app.get('/api/portfolio', function(req, res){

@@ -1,1 +1,16 @@
-INSERT INTO lenders (authId, profileName, firstName, lastName, email, picture) VALUES ($1, $2, $3, $4, $5, $6);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Sulma Yaneth, El Salvador, 2608011);
+INSERT INTO borrowers (name, location, image) VALUES (Gladys, Kenya, 2606638);
+INSERT INTO borrowers (name, location, image) VALUES (Dorothy, Bafut Province, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Joanina, , 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
+INSERT INTO borrowers (name, location, image) VALUES (Litia, Samoa, 2606639);
