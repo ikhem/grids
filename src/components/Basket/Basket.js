@@ -27,8 +27,6 @@ class Basket extends React.Component {
   }
 
   setValue(e, data) {
-    // console.log("e:", e)
-    // console.log("Data: ", data.value)
     this.props.updateCart(e, data.value)
   }
 
@@ -46,7 +44,7 @@ class Basket extends React.Component {
       <Grid className="Basket">
         <Step.Group fluid>
 
-          <Step>
+          <Step active>
             <Step.Content>
               <Step.Title>My Basket</Step.Title>
             </Step.Content>
@@ -93,6 +91,7 @@ class Basket extends React.Component {
           <p>Order total: {total}</p>
           <p>Total due: {total}</p>
         </Well>
+        <Button bsSize="large" bsSize="primary">Continue</Button>
       </Grid>
     )
   }
