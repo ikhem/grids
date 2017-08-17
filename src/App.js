@@ -8,6 +8,7 @@ import Portfolio from './components/Portfolio/Portfolio';
 import Lend from './components/Lend/Lend';
 import Basket from './components/Basket/Basket';
 import Payment from './components/Payment/Payment';
+import Details from './components/Lend/Details';
 
 import Footer from './components/Footer/Footer';
 
@@ -23,6 +24,7 @@ class Wrapper extends React.Component {
             <Route exact path="/" component={Landing} />
             <Route path="/Portfolio" component={Portfolio} />
             <Route path="/Lend" component={Lend} />
+            <Route path="/Details" component={Details} />
             <Route path="/Basket" component={Basket} />
             <Route path="/Payment" component={Payment} />
           </Switch>

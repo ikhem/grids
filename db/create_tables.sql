@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS transactions (
 
 -- Create Loans
 
--- INSERT INTO loans (borrower_id, status, funded_amount, loan_amount, purpous, category, lender_count, origination_date, expiration_date) VALUES 
+-- INSERT INTO loans (borrower_id, status, funded_amount, loan_amount, purpose, category, lender_count, origination_date, expiration_date) VALUES 
 -- (1,'fundraising',0,1425, 'to buy wheelbarrow, rake, shovel, water tank, taro roots seedling, banana tubes seedling, and hand gloves.','Agriculture',0,'2017-08-14','2017-09-13'),
 -- (2,'fundraising',0,1200,'to buy clothes in all different styles, to continue selling.','Clothing',0,'2017-08-14','2017-09-13'),
 -- (3,'fundraising',0,250,'to buy more stock of fruits and vegetables.','Retail',0,'2017-08-14','2017-09-13'),
