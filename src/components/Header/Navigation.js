@@ -15,14 +15,12 @@ class Navigation extends React.Component {
   signOut(){
     localStorage.clear();
     axios.get('/api/signout').then(signoutRes => {
-      console.log(signoutRes, this.props)
       this.props.loggedOut()//gonna remove auth id from state
       this.props.history.push("/");
     });
   }
 
   render() {
-    console.log(this.props)
   return (
     <Navbar>
       <Nav>

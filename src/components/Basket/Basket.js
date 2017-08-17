@@ -70,12 +70,12 @@ class Basket extends React.Component {
           cart.map(loan => {
             return(
               <Card fluid>
-                <Image src={`http://www.kiva.org/img/h300w480/${loan.loan.image.id}.jpg`} width={150} />
+                <Image src={`http://www.kiva.org/img/h300w480/${loan.loan.image}.jpg`} width={150} />
                 <Card.Header>
                   {loan.loan.name}
                 </Card.Header>
                 <Card.Meta>
-                   {loan.loan.location.country} 
+                   {loan.loan.country} 
                 </Card.Meta>
                 <Card.Content extra>
                   <a onClick={ () => this.props.removeFromCart(loan.loan.id) }>Remove</a>

@@ -19,5 +19,4 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
-console.log("store: ", store.getState());
 export default store;

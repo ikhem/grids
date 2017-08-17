@@ -17,14 +17,13 @@ export default function reducer(state, action){
     case GET_USER + '_FULFILLED':
       console.log("User going into state: ", action.payload.data);
       return Object.assign({}, state, { user: action.payload.data });
-    // case GET_LOANS + '_PENDING':
-    //   return state
-    // case GET_LOANS + '_FULFILLED':
-    //   console.log("Fulfilled", action.payload.loans)
-    //   return state;
-      // return Object.assign({}, state, { loans: action. payload });
-    case GET_LOANS:
-      return Object.assign({}, state, { loans: action.payload });
+    case GET_LOANS + '_PENDING':
+      return state
+    case GET_LOANS + '_FULFILLED':
+      console.log("Fulfilled", action.payload.data)
+      return Object.assign({}, state, { loans: action.payload.data });
+    // case GET_LOANS:
+    //   return Object.assign({}, state, { loans: action.payload });
     case ADD_TO_CART:
       // console.log("Action Payload: ", action.payload);
       // console.log("payload.loan:", action.payload.loan);
@@ -78,10 +77,10 @@ export function getUser(){
 export function getLoans(){
   // let promise = axios.get('https://api.kivaws.org/v1/loans/newest.json').then(res => axios.post('/api/populateLoans', res.data.loans))
   // console.log("Loans: ", promise)
-  let promise = newest;
+  // let promise = newest;
   return {
     type: GET_LOANS,
-    payload: axios.post('/api/populateLoans', promise)
+    payload: axios.get('/api/getLoans')
   }
 }
 

@@ -1,7 +1,6 @@
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
-    console.log("SerializedState: ", serializedState);
     if (serializedState === null) {
       return {
         user: {},
@@ -10,7 +9,6 @@ export const loadState = () => {
         loans: null
       };
     }
-    console.log("JSON.parse:", JSON.parse(serializedState));
     return JSON.parse(serializedState);
   } catch (err) {
     return {error: 'error'};

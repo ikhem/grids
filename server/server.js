@@ -7,6 +7,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const keys = require('./keys');
 
+const mainCtrl = require('./controllers/mainCtrl');
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -22,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Setup database through massive
+
 massive('postgres://qxcjfjmp:RSfd5jALpVgRaeefqISBrCKgVMl5aHr0@stampy.db.elephantsql.com:5432/qxcjfjmp').then( db => {
   app.set('db', db);
   db.create_tables();
@@ -61,7 +64,7 @@ app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http://localhost:3000/portfolio'}));
 
 passport.serializeUser(function(profileToSession, done) {
-  done(null, profileToSession); // Puts second argument on session (profile)
+  done(null, profileToSession); // Puts second argument on session 
 });
 
 passport.deserializeUser(function(profileFromSession, done) {
@@ -69,65 +72,14 @@ passport.deserializeUser(function(profileFromSession, done) {
   done(null, profileFromSession);
 });
 
-app.get('/me', function(req, res){
-  res.send(req.user)
-})
+// Endpoints
 
-app.post('/api/populateLoans', function(req, res){
-  console.log("req.body popLoans", req.body.loans)
+app.get('/api/portfolio', mainCtrl.getPortfolio);
+app.get('/api/signout', mainCtrl.signOut);
+app.get('/api/getLoans', mainCtrl.getLoans);
 
-  const db = req.app.get('db');
-
-  // req.body.loans.map(loan => {
-  //   db.add_borrower([loan.name, loan.location.country, loan.image.id]).then( bor_id => db.add_loan([bor_id, loan.status, loan.funded_amount, loan.loan_amount, loan.use, loan.sector, loan.posted_date, loan.planned_expiration_date]))
-  // })
-
-  req.body.loans.map(loan => {
-    db.add_borrower([loan.name, loan.location.country, loan.image.id])
-  })
-
-  res.status(200).send(req.body)
-})
-
-// Get user on session
-
-app.get('/api/portfolio', function(req, res){
-  console.log("Console from line 93 server.js req.user:", req.session.user)
-  let user = Object.assign(req.user, req.session.user );
-  console.log("user:", user);
-  console.log("req.user:", req.user);
-  res.status(200).send(req.user);
-  // res.send(req.user)
-})
-
-// Sign user out of session
-
-app.get('/api/signout', function(req, res){
-  req.logout();
-  console.log('signed out')
-  res.status(200).send(true);
-})
-
-app.post('/api/checkout', function(req, res){
-  console.log("req.body", req.body)
-  console.log("req.user", req.user)
-
-  const elephantDb = req.app.get('db');
-
-  req.body.map(loan => {
-    // //Insert into the borrower table
-    // elephantDb.add_borrower([loan.loan.name, loan.loan.location.country, loan.loan.image.id]).then(borrower => console.log(borrower) )
-    // //Insert into the loan table
-    // elephantDb.add_loan([loan.loan.id, loan.loan.status, loan.loan.funded_amount, loan.loan.use, loan.loan.sector, loan.loan.posted_date, loan.loan.planned_expiration_date])
-    // //Insert into the transaction table
-
-    console.log("loan.id", loan.loan.id)
-    console.log("loan.name", loan.loan.name)
-    console.log("loan.status", loan.loan.status)
-  })
-
-  res.status(200)
-})
+app.post('/api/checkout', mainCtrl.checkOut);
+app.post('/api/populateLoans', mainCtrl.populateLoans);
 
 // Add item to cart
 

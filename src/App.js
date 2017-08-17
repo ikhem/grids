@@ -31,9 +31,9 @@ class Wrapper extends React.Component {
     )
   }
 }
+
 class App extends Component {
   render() {
-    console.log("App:", this.props)
     return (
       <Router>
         <div>

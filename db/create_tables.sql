@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS loans (
   status TEXT,
   funded_amount INTEGER,
   loan_amount INTEGER,
-  purpous TEXT,
+  purpose TEXT,
   category TEXT,
   lender_count INTEGER,
   origination_date DATE,

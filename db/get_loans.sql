@@ -1,1 +1,1 @@
-SELECT * FROM projects;
+SELECT loans.id, borrowers.name, status, funded_amount, borrowers.image, borrowers.location as country, origination_date, expiration_date, loan_amount, purpous as use, lender_count FROM loans JOIN borrowers ON borrowers.id = loans.id

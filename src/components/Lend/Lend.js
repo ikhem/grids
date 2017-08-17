@@ -14,6 +14,7 @@ class Lend extends React.Component {
   }
 
   render(){
+    console.log("Loans:", this.props.loans)
     return(
       <Grid className="Lend" fluid="false">
         <Row>
@@ -30,16 +31,16 @@ class Lend extends React.Component {
               <Card.Group>
               {
                 !this.props.loans ?  <Loader active inline='centered' /> : 
-                this.props.loans.loans.map(loan => {
+                this.props.loans.map(loan => {
                 return (
                   <Card>
-                    <Image src={`http://www.kiva.org/img/h300w480/${loan.image.id}.jpg`} />
+                    <Image src={`http://www.kiva.org/img/h300w480/${loan.image}.jpg`} />
                     <Card.Content>
                     <Card.Header>
                       {loan.name}
                     </Card.Header>
                     <Card.Meta>
-                      {loan.location.country}
+                      {loan.country}
                     </Card.Meta>
                     <Card.Description>
                       A Loan of ${loan.loan_amount} helps {loan.use}
@@ -67,7 +68,6 @@ class Lend extends React.Component {
 }
 
 function mapStateToProps(state){
-  console.log("lend state:", state)
   return {
     loans: state.loans,
     cart: state.cart
