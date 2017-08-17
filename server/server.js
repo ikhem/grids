@@ -24,7 +24,9 @@ app.use(passport.session());
 //Setup database through massive
 massive('postgres://qxcjfjmp:RSfd5jALpVgRaeefqISBrCKgVMl5aHr0@stampy.db.elephantsql.com:5432/qxcjfjmp').then( db => {
   app.set('db', db);
-  db.create_tables()
+  db.create_tables();
+  // db.create_borrowers();
+  // db.create_loans();
 });
 
 passport.use(new Auth0Strategy({
