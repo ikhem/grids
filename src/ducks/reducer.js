@@ -57,8 +57,8 @@ export default function reducer(state, action){
       return Object.assign({}, state, {});
       case CHECK_OUT + '_PENDING':
         return state;
-      case CHECK_OUT + '_FULFILLED':  
-        return Object.assign({}, state, { cart: []} )
+      case CHECK_OUT + '_FULFILLED':
+        return Object.assign({}, state, { cart: action.payload.data } )
       case LOGGED_OUT:
         return Object.assign({}, state, { user: action.payload, cart: [] })
     default:

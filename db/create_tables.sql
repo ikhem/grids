@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS transactions (
   id SERIAL PRIMARY KEY,
   lender_id INTEGER REFERENCES lenders(id),
   loan_id INTEGER REFERENCES loans(id),
-  amount DECIMAL NOT NULL
+  amount INTEGER NOT NULL
 );
 
 -- Drop all tables from database in this order only

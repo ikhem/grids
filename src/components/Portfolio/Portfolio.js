@@ -20,13 +20,14 @@ class Portfolio extends React.Component {
   
           </Col> */}
           <Col lg={12}>
-            {JSON.stringify(this.props.user)}
+            {/* {JSON.stringify(this.props.user)} */}
             {this.props.loading ? <h1>Loading</h1> : 
             <div>
               <p className="name">{`${this.props.user.firstname} ${this.props.user.lastname}`} </p>
               {/* <img width={100} height={100} src= {this.props.user.picture} alt="profile_pic" />  */}
               <p>Outstanding Loans</p>
               <p>Available Kiva Credit</p>
+              <p>Recent Loans</p>
               <button><Link to='/Lend'>Find a Loan</Link></button>
             </div>
             }

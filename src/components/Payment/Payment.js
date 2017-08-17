@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { checkOut } from '../../ducks/reducer';
 
 import { Grid, Row, Col } from 'react-bootstrap';
@@ -10,6 +11,7 @@ import { Step, Card, Table } from 'semantic-ui-react'
 import './Payment.css';
 
 class Payment extends React.Component {
+
   render(){
   let { cart } = this.props;
   console.log("cart: ", this.props);
@@ -79,7 +81,7 @@ class Payment extends React.Component {
         <p>Total due: {total}</p>
       </Well>
 
-      <Button bsSize="large" bsSize="primary" onClick={ () => this.props.checkOut( this.props.cart )} >Continue</Button>
+      <Button bsSize="large" bsSize="primary" onClick={ () => this.props.checkOut( this.props.cart )}><Link to="/ThankYou">Continue</Link></Button>
     </Grid>
   )
   }
