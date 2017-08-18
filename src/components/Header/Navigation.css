@@ -31,5 +31,13 @@
 .navbar-nav>li>a{
   padding-top: 0px;
   padding-bottom: 0px;
-  line-height: 45px;
+  line-height: 49px;
+}
+
+.Cat {
+  font-size: bold;
+  color: skyblue;
+  margin-left: 15px;
+  margin-top: 10px;
+  padding-top: 5px;
 }

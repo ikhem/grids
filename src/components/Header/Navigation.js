@@ -26,12 +26,12 @@ class Navigation extends React.Component {
 
   render() {
   return (
-    <Navbar>
+    <Navbar className="Discover">
 
       <Nav>
         <NavItem><Link to="/"><span className="Logo">Kiva</span></Link></NavItem> 
         <NavDropdown title="Lend">
-          <h3>Categories</h3>
+          <h3 className="Cat">Categories</h3>
             <MenuItem>Women</MenuItem>
             <MenuItem>Agriculture</MenuItem>
             <MenuItem>Education</MenuItem>
