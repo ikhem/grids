@@ -18,3 +18,17 @@
     padding: 20px;
     font-family: sans-serif;
     margin: 20px; }
+
+    .profile img.ui.image{
+      margin: 0px;
+    }
+    
+    .profile .ui.card, .ui.cards>.card {
+      border-radius: 0px;
+    }
+    
+.sumOutstanding {
+  color: green;
+  font-size: bold;
+  font-size: 60px;
+}

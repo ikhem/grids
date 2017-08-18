@@ -5,7 +5,8 @@ export const loadState = () => {
       return {
         user: {},
         cart: [],
-        total: [],
+        sum_Outstanding: 0,
+        loans_Outstanding: [],
         loans: null
       };
     }

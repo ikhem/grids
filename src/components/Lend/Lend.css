@@ -2,6 +2,14 @@
   min-height: 800px;
 }
 
+.Lend img.ui.image{
+  margin: 0px;
+}
+
+.Lend .ui.card, .ui.cards>.card {
+  border-radius: 0px;
+}
+
 .progress {
   height: 0px; 
   overflow: visible;

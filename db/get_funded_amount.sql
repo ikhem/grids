@@ -1,0 +1,1 @@
+select sum(amount) from transactions where loan_id = $1

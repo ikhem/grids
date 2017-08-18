@@ -3,21 +3,26 @@ module.exports = {
     const db = req.app.get('db');
 
     db.get_loans()
-      .then( loans => res.status(200).send(loans))
+      .then( loans => {
+        console.log(loans)
+        res.status(200).send(loans)})
       .catch( () => res.status(500).send());
   },
   getPortfolio: (req, res) => {
 
     const db = req.app.get('db');
-    console.log("Console from line 94 req.user", req.user)
+    // console.log("Console from line 94 req.user", req.user)
 
-    console.log("User ID:", req.user.id)
+    console.log("User ID:", req.user)
 
-    let money = db.get_portfolio([req.user.id]).then(stuff => stuff).catch(()=>res.status(500).send())
+    db.get_outstandingSum([req.user.id]).then(money => {
+      db.get_outstandingLoans([req.user.id]).then(loans => {
+        res.status(200).send({user: req.user, sumOutstanding: money[0].sum , loansOutstanding: loans});
+      }).catch( err => console.log(err))
+    }).catch( err => console.log(err))
 
-    console.log("Give me Money: ", money);
+    // res.status(200).send(req.user);
     
-    res.status(200).send(req.user);
   },
   signOut: (req, res) => {
     req.logout();
