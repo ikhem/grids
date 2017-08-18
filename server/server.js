@@ -28,8 +28,6 @@ app.use(passport.session());
 massive('postgres://qxcjfjmp:RSfd5jALpVgRaeefqISBrCKgVMl5aHr0@stampy.db.elephantsql.com:5432/qxcjfjmp').then( db => {
   app.set('db', db);
   db.create_tables();
-  // db.create_borrowers();
-  // db.create_loans();
 });
 
 passport.use(new Auth0Strategy({
@@ -70,8 +68,7 @@ passport.serializeUser(function(profileToSession, done) {
 });
 
 passport.deserializeUser(function(profileFromSession, done) {
-  //obj is value from session
-  done(null, profileFromSession);
+  done(null, profileFromSession); //obj is value from session
 });
 
 // Endpoints
@@ -82,31 +79,6 @@ app.get('/api/getLoans', mainCtrl.getLoans);
 
 app.post('/api/checkout', mainCtrl.checkOut);
 app.post('/api/populateLoans', mainCtrl.populateLoans);
-
-// Add item to cart
-
-// app.post('/api/cart', (req, res) =>{
-//   req.session.user.cart.push(req.body);
-//   console.log("Console server.js line 116:", req.session.user)
-//   res.status(200).send(req.session.user);
-// })
-
-// Remove item from cart
-
-// app.delete('/api/cart', (req, res) =>{
-//   console.log("Delete: ", req.query.id);
-//   const { id } = req.query;
-//   const { cart } = req.session.user;
-//   console.log("req.session.cart: ", cart)
-
-//   let newCart = cart.filter(items => {
-//     return items.id != id
-//   })
-
-//   console.log("New Cart: ", newCart);
-
-//   res.status(200).send(newCart);
-// })
 
 const port = 3001;
 app.listen(port, () => {

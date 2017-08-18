@@ -1,9 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+
 import { connect } from 'react-redux';
-import { getUser, loggedOut } from '../../ducks/reducer';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
+import { getUser, loggedOut } from '../../ducks/reducer';
+
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 import './Navigation.css';
 
 class Navigation extends React.Component {
@@ -23,8 +27,9 @@ class Navigation extends React.Component {
   render() {
   return (
     <Navbar>
+
       <Nav>
-        <NavItem><Link to="/">Kiva</Link></NavItem> 
+        <NavItem><Link to="/"><span className="Logo">Kiva</span></Link></NavItem> 
         <NavDropdown title="Lend">
           <h3>Categories</h3>
             <MenuItem>Women</MenuItem>
@@ -51,23 +56,23 @@ class Navigation extends React.Component {
             <MenuItem><Link to="/Lend">All Loans</Link></MenuItem>
         </NavDropdown>
       </Nav>
+
       <Nav pullRight>
-        {
-          this.props.cart.length > 0 ?
-          <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
-          <NavDropdown title="About">
-            <MenuItem>About Us</MenuItem>
-            <MenuItem>How Kiva Works</MenuItem>
-            <MenuItem>Impact</MenuItem>
-            <MenuItem>Leadership</MenuItem>
-            <MenuItem>Finaces</MenuItem>
-            <MenuItem>Press</MenuItem>
-            <MenuItem>Due Diligence</MenuItem>
-          </NavDropdown>
-        }       
+      {
+        this.props.cart.length > 0 ?
+        <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
+        <NavDropdown title="About">
+          <MenuItem>About Us</MenuItem>
+          <MenuItem>How Kiva Works</MenuItem>
+          <MenuItem>Impact</MenuItem>
+          <MenuItem>Leadership</MenuItem>
+          <MenuItem>Finances</MenuItem>
+          <MenuItem>Press</MenuItem>
+          <MenuItem>Due Diligence</MenuItem>
+        </NavDropdown>
+      }       
 
-        {
-
+      {
         this.props.user.authid ? 
         <Nav>
           <NavDropdown title="Profile">
@@ -76,15 +81,14 @@ class Navigation extends React.Component {
             <MenuItem>Donations</MenuItem>  
             <MenuItem>Settings</MenuItem>   
             <MenuItem divider />  
-             {/* <MenuItem href="http://localhost:3001/api/signout">Sign Out</MenuItem>  */}
-             <MenuItem onClick={this.signOut.bind(this)}>Sign Out</MenuItem> 
+            <MenuItem onClick={this.signOut.bind(this)}>Sign Out</MenuItem> 
           </NavDropdown>
-          <NavItem><Link to="/Profile"><img width={40} height={40} src={this.props.user.picture} alt="profile_pic" /></Link></NavItem>
-        </Nav> : 
-        <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
-        }
-
+          <NavItem><img className="profile_pic" src={this.props.user.picture} alt="profile_pic" /></NavItem>
+        </Nav>
+        : <NavItem href="http://localhost:3001/auth/">Sign In</NavItem>
+      }  
       </Nav> 
+
     </Navbar>
     );
   }

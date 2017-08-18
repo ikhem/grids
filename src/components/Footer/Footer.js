@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
 import './Footer.css';
 
 export default function Footer(){
@@ -26,7 +27,7 @@ export default function Footer(){
       <div className="copyright">
         <p className="warning">Lending through Kiva involves risk of principle loss. Kiva does not guarantee repayment or offer a financial return on your loan.
         </p>
-        <p>&copy Kiva. All rights reserved.</p>
+        <p>Kiva. All rights reserved.</p>
       </div>
 
     </Row>

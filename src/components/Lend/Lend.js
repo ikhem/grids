@@ -61,7 +61,9 @@ class Lend extends React.Component {
             }
             </Card.Group>
           </Col>
+          <Button>Next</Button>
         </Row>
+
       </Grid>
     )
   }

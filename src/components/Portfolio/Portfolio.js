@@ -38,10 +38,11 @@ class Portfolio extends React.Component {
               <p>Recent Loans</p>
               <Card.Group>
               {
-              this.props.loansOutstanding.map(loan => {
-                return (
-                  <Card>
-                    <Image src={`http://www.kiva.org/img/h300w480/${loan.image}.jpg`} />
+                this.props.loansOutstanding ?
+                this.props.loansOutstanding.map(loan => {
+                  return (
+                    <Card>
+                      <Image src={`http://www.kiva.org/img/h300w480/${loan.image}.jpg`} />
                     <Card.Content>
                     <Card.Header>
                       {loan.name}
@@ -55,7 +56,8 @@ class Portfolio extends React.Component {
                     </Card.Content>
                   </Card> 
                 )
-              })
+              }) :
+              <p></p>
               }
               </Card.Group>
             </div>

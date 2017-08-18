@@ -10,15 +10,26 @@
   color: white;
 }
 
-.navbar-nav li a {
-   /* line-height: 30px;  */
-}
-
 .navbar img {
   border-radius: 50%;
 }
 
-.nav li a {
-  /* padding-top: 3px;
-  padding-bottom: 3px; */
+.Logo {
+  color: white;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+  color: #91bd47;
+  background-color: #236133;
+}
+
+.profile_pic {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-nav>li>a{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  line-height: 45px;
 }

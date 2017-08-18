@@ -5,6 +5,7 @@ module.exports = {
     db.get_loans()
       .then( loans => {
         console.log(loans)
+        // db.get_fundedAmount([loans.])
         res.status(200).send(loans)})
       .catch( () => res.status(500).send());
   },
