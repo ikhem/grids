@@ -71,19 +71,19 @@ export default function Landing(){
         <Col lg={2}>LinkedIn</Col>
         <Col lg={2}>Instgram</Col> */}
         <div className="FollowUs">
-          <a href="https://www.facebook.com/kiva" className="icon">
+          <a href="https://www.facebook.com/kiva" className="followMe">
             <img alt="Facebook" src={require('./fb-art.png')} />
           </a>
-          <a href="https://twitter.com/Kiva" className="icon">
+          <a href="https://twitter.com/Kiva" className="followMe">
             <img alt="Twitter" src={require('./twitter-art.png')} />
           </a>
-          <a href="https://www.youtube.com/user/kiva" className="icon">
+          <a href="https://www.youtube.com/user/kiva" className="followMe">
             <img alt="YouTube" src={require('./youtube-art.svg')} />
           </a>
-          <a href="https://www.linkedin.com/company/266361" className="icon">
+          <a href="https://www.linkedin.com/company/266361" className="followMe">
             <img alt="LinkedIn" src={require('./linkedin-art.png')} />
           </a>
-          <a href="https://instagram.com/kiva_microloans/" className="icon">
+          <a href="https://instagram.com/kiva_microloans/" className="followMe">
             <img alt="Instagram" src={require('./instagram-art.png')} />
           </a>
         </div>

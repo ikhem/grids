@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { checkOut } from '../../ducks/reducer';
 
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Well, Button } from 'react-bootstrap';
-import { Step, Card, Table } from 'semantic-ui-react'
+import { Grid, Row, Col, Panel } from 'react-bootstrap';
+import { Step, Card, Table, Button } from 'semantic-ui-react'
 
 import './Payment.css';
 
@@ -64,7 +63,7 @@ class Payment extends React.Component {
           cart.map(loan => {
           return(
             <Table.Row verticalAlign='top'>
-              <Table.Cell>{loan.loan.name}</Table.Cell>
+              <Table.Cell><h4>{loan.loan.name}</h4></Table.Cell>
               <Table.Cell>${loan.amount}</Table.Cell>
               <Table.Cell>1</Table.Cell>
               <Table.Cell>${loan.amount}</Table.Cell>
@@ -76,12 +75,21 @@ class Payment extends React.Component {
         </Table>
       } 
 
-      <Well>
-        <p>Order total: {total}</p>
-        <p>Total due: {total}</p>
-      </Well>
+      <Panel>
+        <h3>Order total: ${total}</h3>
+      </Panel>
+      <Panel>
+        <h2>Total due: ${total}</h2>
+      </Panel>
 
-      <Button bsSize="large" bsSize="primary" onClick={ () => this.props.checkOut( this.props.cart )}><Link to="/ThankYou">Continue</Link></Button>
+      <Panel className="Continue">
+      {
+        this.props.user.authid ?
+        <Button size="massive" color="blue" onClick={ () => this.props.checkOut( this.props.cart )}><Link to="/ThankYou" onClick={this.loggedIn}>Continue</Link></Button> :
+        null
+      }
+      </Panel>
+
     </Grid>
   )
   }
@@ -89,6 +97,7 @@ class Payment extends React.Component {
 
 function mapStateToProps(state){
   return {
+    user: state.user,
     cart: state.cart
   }
 }

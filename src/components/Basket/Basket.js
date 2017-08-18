@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getLoans, removeFromCart, updateCart } from '../../ducks/reducer';
 
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Well, Image, Button } from 'react-bootstrap';
-import { Step, Card, Menu, Dropdown } from 'semantic-ui-react';
+import { Grid, Row, Col, Panel } from 'react-bootstrap';
+import { Well, Image } from 'react-bootstrap';
+import { Step, Card, Menu, Dropdown, Item, Button } from 'semantic-ui-react';
 
 import './Basket.css';
 import '../Step.css';
@@ -66,39 +66,49 @@ class Basket extends React.Component {
           </Step>
 
         </Step.Group>
+        <Item.Group divided>
         {
           cart.map(loan => {
             return(
-              <Card fluid>
-                <Image src={`http://www.kiva.org/img/h300w480/${loan.loan.image}.jpg`} width={150} />
-                <Card.Header>
-                  {loan.loan.name}
-                </Card.Header>
-                <Card.Meta>
-                   {loan.loan.country} 
-                </Card.Meta>
+              <Item>
+                <Item.Image size="small" src={`http://www.kiva.org/img/h300w480/${loan.loan.image}.jpg`} />
+
                 <Card.Content extra>
-                  <a onClick={ () => this.props.removeFromCart(loan.loan.id) }>Remove</a>
+                  <Item.Header>{loan.loan.name}</Item.Header>
+                  <Item.Meta>{loan.loan.country}</Item.Meta>
+                </Card.Content>
+                <Card.Content extra>
                 </Card.Content>
                 <Card.Content>
                   <Menu compact>
                     <Dropdown placeholder="$25" closeOnChange={true} options={options} item onChange={(e, value)=>{this.setValue(loan.loan.id, value)}}/>
-                  </Menu>
+                 </Menu>
+                 <a onClick={ () => this.props.removeFromCart(loan.loan.id) }>Remove</a> 
                 </Card.Content>
-              </Card>
+
+              </Item>
             )
           })
         } 
-        <Well>
-          <p>Order total: ${total}</p>
-          <p>Total due: ${total}</p>
-        </Well>
+        </Item.Group>
+
+        <Panel>
+          <h3>Order total: ${total}</h3>
+        </Panel>
+        <Panel>
+          <h2>Total due: ${total}</h2>
+        </Panel>
+        
+        <Panel className="Continue">
         {
           this.props.cart.length ?
-          <Button bsSize="large" bsSize="primary"><Link to="/Payment" onClick={this.loggedIn}>Continue</Link></Button> :
+          <Button size="massive" color="blue"><Link to="/Payment" onClick={this.loggedIn}>Continue</Link></Button> :
           null
         }
-        <Link to="/Lend">Find more loans</Link>
+        </Panel>
+        <Panel>
+        <h3><Link to="/Lend">Find more loans</Link></h3>
+        </Panel>
       </Grid>
     )
   }

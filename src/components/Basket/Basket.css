@@ -19,3 +19,16 @@
   border: none;
 }
 
+.panel {
+  display: flex;
+  justify-content: flex-end;
+  border: none;
+}
+
+.ui.blue.button, .ui.blue.buttons .button{
+  margin: 0px;
+}
+
+.Continue a {
+  color: white;
+}
