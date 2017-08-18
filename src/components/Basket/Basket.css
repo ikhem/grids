@@ -26,7 +26,8 @@
 }
 
 .ui.blue.button, .ui.blue.buttons .button{
-  margin: 0px;
+  margin-right: 0px;
+  margin-left: 10px;
 }
 
 .Continue a {
