@@ -3,13 +3,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { checkOut } from '../../ducks/reducer';
+import axios from 'axios';
 
 import { Grid, Row, Col, Panel } from 'react-bootstrap';
 import { Step, Card, Table, Button } from 'semantic-ui-react'
 
+import StripeCheckout from 'react-stripe-checkout';
+
 import './Payment.css';
 
 class Payment extends React.Component {
+
+  onToken = (token) => {
+    token.card = void 0;
+    console.log('token', token);
+    axios.post('http://localhost:3001/api/payment', { token, amount: 100}).then(response => {
+      // this.props.checkOut( this.props.cart )
+      this.props.history.push("/ThankYou")
+    });
+  }
 
   render(){
   let { cart } = this.props;
@@ -85,7 +97,11 @@ class Payment extends React.Component {
       <Panel className="Continue">
       {
         this.props.user.authid ?
-        <Button size="massive" color="blue" onClick={ () => this.props.checkOut( this.props.cart )}><Link to="/ThankYou" onClick={this.loggedIn}>Continue</Link></Button> :
+        <StripeCheckout
+          token={this.onToken}
+          stripeKey={ 'pk_test_pRHi3LdOP1wVPBXtN81dpSk3' }
+          amount={total*100}
+        /> :
         null
       }
       </Panel>

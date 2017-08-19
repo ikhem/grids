@@ -7,11 +7,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const keys = require('./keys');
 
+const stripe = require('stripe')(keys.secret_key);
+
 const mainCtrl = require('./controllers/mainCtrl');
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 //Setup Auth0
 app.use(session({
@@ -78,7 +81,46 @@ app.get('/api/signout', mainCtrl.signOut);
 app.get('/api/getLoans', mainCtrl.getLoans);
 
 app.post('/api/checkout', mainCtrl.checkOut);
-app.post('/api/populateLoans', mainCtrl.populateLoans);
+
+app.post('/api/payment', function(req, res, next){
+  //convert amount to pennies
+  const amountArray = req.body.amount.toString().split('');
+  const pennies = [];
+  for (var i = 0; i < amountArray.length; i++) {
+    if(amountArray[i] === ".") {
+      if (typeof amountArray[i + 1] === "string") {
+        pennies.push(amountArray[i + 1]);
+      } else {
+        pennies.push("0");
+      }
+      if (typeof amountArray[i + 2] === "string") {
+        pennies.push(amountArray[i + 2]);
+      } else {
+        pennies.push("0");
+      }
+    	break;
+    } else {
+    	pennies.push(amountArray[i])
+    }
+  }
+  const convertedAmt = parseInt(pennies.join(''));
+
+  const charge = stripe.charges.create({
+  amount: convertedAmt, // amount in cents, again
+  currency: 'usd',
+  source: req.body.token.id,
+  description: 'Test charge from react app'
+}, function(err, charge) {
+    if (err) return res.sendStatus(500)
+    return res.sendStatus(200);
+  // if (err && err.type === 'StripeCardError') {
+  //   // The card has been declined
+  // }
+});
+
+});
+
+
 
 const port = 3001;
 app.listen(port, () => {

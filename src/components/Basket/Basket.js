@@ -21,7 +21,7 @@ const options = [
 class Basket extends React.Component {
   constructor(props){
     super(props)
-
+    // Sets the value for the drop down box
     this.setValue = this.setValue.bind(this);
   }
 
@@ -117,8 +117,7 @@ class Basket extends React.Component {
 function mapStateToProps(state){
   return {
     user: state.user,
-    cart: state.cart,
-    // loans: state.loans,
+    cart: state.cart
   }
 }
 

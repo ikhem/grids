@@ -7,7 +7,8 @@ export const loadState = () => {
         cart: [],
         sum_Outstanding: 0,
         loans_Outstanding: [],
-        loans: null
+        loans: null,
+        total: 0
       };
     }
     return JSON.parse(serializedState);

@@ -44,16 +44,5 @@ module.exports = {
     })
   
     res.status(200).send([])
-  },
-  populateLoans: (req, res) => {
-    console.log("req.body popLoans", req.body.loans)
-    
-    const db = req.app.get('db');
-    
-    req.body.loans.map(loan => {
-      db.add_borrower([loan.name, loan.location.country, loan.image.id])
-    })
-    
-    res.status(200).send(req.body)
   }
 }
