@@ -4,6 +4,7 @@
   font-size: 20px;
   font-weight: bold;
   border: 0px;
+  border-radius: 0px;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -36,8 +37,16 @@
 
 .Cat {
   font-size: bold;
-  color: skyblue;
   margin-left: 15px;
   margin-top: 10px;
   padding-top: 5px;
+}
+
+.ui.steps {
+  border-radius: 0px;
+}
+
+.dropdown-menu li a {
+  color: rgb(38, 182, 232);
+  font-weight: bold;
 }

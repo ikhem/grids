@@ -28,6 +28,7 @@ class Navigation extends React.Component {
   return (
     <Navbar className="Discover">
 
+      {/* Displays the kiva logo and lend dropdown menu */}
       <Nav>
         <NavItem><Link to="/"><span className="Logo">Kiva</span></Link></NavItem> 
         <NavDropdown title="Lend">
@@ -57,10 +58,11 @@ class Navigation extends React.Component {
         </NavDropdown>
       </Nav>
 
+      {/* Displays the shopping cart basket if the basket has items */}
       <Nav pullRight>
       {
         this.props.cart.length > 0 ?
-        <NavItem><Link to="/Basket">{this.props.cart.length} Basket</Link></NavItem> :
+        <NavItem><Link to="/Basket"><span className="Logo">{this.props.cart.length} Basket</span></Link></NavItem> :
         <NavDropdown title="About">
           <MenuItem>About Us</MenuItem>
           <MenuItem>How Kiva Works</MenuItem>
@@ -72,6 +74,7 @@ class Navigation extends React.Component {
         </NavDropdown>
       }       
 
+      {/* Displays profile picture in righthand corner if logged in */}
       {
         this.props.user.authid ? 
         <Nav>

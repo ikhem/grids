@@ -49,7 +49,9 @@ class Lend extends React.Component {
 
                     <Card.Content>
                       <Card.Header>
-                        {loan.name}
+                        <span className="LoanTitle">
+                          {loan.name}
+                        </span>
                       </Card.Header>
                       <Card.Meta>
                         {loan.country}

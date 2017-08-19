@@ -246,9 +246,15 @@
   font-size: 28px;
 }
 
-/* .StartLending p {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
- */
+ .Choose {
+   font-size: 28px;
+ }
+
+ i.huge.icon {
+   font-size: 3.5em;
+   margin: 0px 35px 0px 35px;
+ }
+
+ i.huge.icon:hover {
+   color: navy;
+ }

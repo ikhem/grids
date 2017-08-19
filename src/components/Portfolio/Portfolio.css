@@ -5,7 +5,7 @@
   min-height: 800px;
   margin: 25px; }
   .profile img {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     margin: 15px; }
   .profile .name {
     font-weight: bold;
@@ -32,3 +32,9 @@
   font-size: bold;
   font-size: 60px;
 }
+
+.NavProfile {
+  background-color: #236133;
+  font-size: 14px;
+}
+
