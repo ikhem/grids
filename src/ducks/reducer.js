@@ -1,5 +1,5 @@
 import axios from 'axios';
-import newest from './newest.json';
+// import newest from './newest.json';
 
 const GET_USER = "GET_USER";
 const GET_LOANS = "GET_LOANS";
@@ -35,7 +35,7 @@ export default function reducer(state, action){
 
     case REMOVE_FROM_CART:
       return Object.assign({}, state, { cart: state.cart.filter(item =>{
-        return item.loan.id != action.payload
+        return item.loan.id !== action.payload
       })})
 
     case UPDATE_CART:

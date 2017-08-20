@@ -2,8 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { Grid, Panel } from 'react-bootstrap';
-import { Table, Divider, Icon } from 'semantic-ui-react';
+import { Grid } from 'react-bootstrap';
+import { Divider, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
 import { checkOut } from '../../ducks/reducer';

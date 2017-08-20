@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react';
+
 import './Footer.css';
 
 export default function Footer(){

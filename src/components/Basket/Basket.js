@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getLoans, removeFromCart, updateCart } from '../../ducks/reducer';
 
-import { Grid, Row, Col, Panel } from 'react-bootstrap';
-import { Well, Image } from 'react-bootstrap';
+import { Grid, Panel } from 'react-bootstrap';
 import { Step, Card, Menu, Dropdown, Item, Button } from 'semantic-ui-react';
 
 import './Basket.css';

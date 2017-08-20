@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { checkOut } from '../../ducks/reducer';
 import axios from 'axios';
 
-import { Grid, Row, Col, Panel } from 'react-bootstrap';
-import { Step, Card, Table, Button } from 'semantic-ui-react'
+import { Grid, Panel } from 'react-bootstrap';
+import { Step, Table } from 'semantic-ui-react'
 
 import StripeCheckout from 'react-stripe-checkout';
 

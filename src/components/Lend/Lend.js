@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getLoans, addToCart } from '../../ducks/reducer';
 
-import { Card, Image, Progress, Button, Loader, Menu, Search, Flag } from 'semantic-ui-react';
+import { Card, Image, Progress, Button, Loader } from 'semantic-ui-react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import './Lend.css';
