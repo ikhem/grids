@@ -6,8 +6,42 @@ import './Portfolio.css';
 
 import { Grid, Row, Navbar, NavItem, Nav } from 'react-bootstrap';
 import { Card, Image, Divider, Button } from 'semantic-ui-react';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+
+const GettingStartedGoogleMap = withGoogleMap(props => (
+  <GoogleMap
+    ref={props.onMapLoad}
+    defaultZoom={2}
+    defaultCenter={{ lat: 42, lng: 23 }}
+    onClick={props.onMapClick}
+  >
+    {props.markers.map(marker => (
+      <Marker
+        {...marker}
+        onRightClick={() => props.onMarkerRightClick(marker)}
+      />
+    ))}
+  </GoogleMap>
+));
 
 class Portfolio extends React.Component {
+
+  state = {
+    markers: [{
+      position: {
+        lat: 13,
+        lng: 105,
+      },
+      key: `Taiwan`,
+      defaultAnimation: 2,
+    },
+    {
+      position: {
+        lat: 42,
+        lng: 23
+      }
+    }],
+  };
 
   componentDidMount(){
     this.props.getUser();
@@ -74,6 +108,20 @@ class Portfolio extends React.Component {
               </div>
               }
             {/* </Col> */}
+          </Row>
+          <Row style={{height: `100%`, width: `100%`, 'padding-top': '30px'}}>
+            <GettingStartedGoogleMap
+              containerElement={
+                <div style={{ height: `550px` }} />
+              }
+              mapElement={
+                <div style={{ height: `550px`, width: `100%` }} />
+              }
+              onMapLoad={this.handleMapLoad}
+              onMapClick={this.handleMapClick}
+              markers={this.state.markers}
+              onMarkerRightClick={this.handleMarkerRightClick}
+            />
           </Row>
         </Grid>
       </div>
