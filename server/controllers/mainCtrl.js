@@ -10,12 +10,16 @@ module.exports = {
   getPortfolio: (req, res) => {
     const db = req.app.get('db');
     console.log("u: ", req.user);
-    db.get_outstandingSum([req.user.id]).then(money => {
+    if(req.user){
+      db.get_outstandingSum([req.user.id]).then(money => {
       db.get_outstandingLoans([req.user.id]).then(loans => {
         res.status(200).send({user: req.user, sumOutstanding: money[0].sum , loansOutstanding: loans});
       }).catch( err => console.log(err))
     }).catch( err => console.log(err))
-
+    } else {
+      console.log("User not logged in")
+      res.status(500)
+    }
     // res.status(200).send(req.user);
     
   },
