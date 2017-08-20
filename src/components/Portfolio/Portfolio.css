@@ -1,31 +1,23 @@
 .profile {
-  display: flex;
-  justify-content: center;
-  text-align: center;
   min-height: 800px;
-  margin: 25px; }
-  .profile img {
-    /* border-radius: 50%; */
-    margin: 15px; }
-  .profile .name {
-    font-weight: bold;
-    font-size: 28px; }
-  .profile button {
-    border: none;
-    color: white;
-    font-size: 20px;
-    background-color: skyblue;
-    padding: 20px;
-    font-family: sans-serif;
-    margin: 20px; }
+}
 
-    .profile img.ui.image{
-      margin: 0px;
-    }
+.name {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.profile img.ui.image{
+  margin: 0px;
+}
     
-    .profile .ui.card, .ui.cards>.card {
-      border-radius: 0px;
-    }
+.profile .ui.card, .ui.cards>.card {
+  border-radius: 0px;
+}
+
+.FindALoan a {
+  color: white;
+}
     
 .sumOutstanding {
   color: green;
@@ -37,4 +29,3 @@
   background-color: #236133;
   font-size: 14px;
 }
-

@@ -9,7 +9,7 @@ import './Landing.css';
 
 export default function Landing(){
   return (
-    <Grid fluid="false">
+    <Grid fluid={true}>
 
       <Karousel />
 

@@ -26,11 +26,9 @@ class Payment extends React.Component {
   let { cart } = this.props;
   console.log("cart: ", this.props);
 
-  let total = 0;
-  
-  this.props.cart.map(item => {
-    total = total + Number(item.amount)
-  })
+  let total = this.props.cart.reduce((sum, value)=>{
+    return sum + Number(value.amount);
+  }, 0)
 
   return(
     <Grid className="Payment">
@@ -73,7 +71,7 @@ class Payment extends React.Component {
           {
           cart.map(loan => {
           return(
-            <Table.Row verticalAlign='top'>
+            <Table.Row key={loan.loan.id} verticalAlign='top'>
               <Table.Cell><p>{loan.loan.name}</p></Table.Cell>
               <Table.Cell><p>${loan.amount}</p></Table.Cell>
               <Table.Cell><p>1</p></Table.Cell>

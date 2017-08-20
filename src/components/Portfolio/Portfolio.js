@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { getUser } from '../../ducks/reducer';
 import './Portfolio.css';
 
-import { Grid, Row, Col, Navbar, NavItem, Nav } from 'react-bootstrap';
-import { Card, Image, Progress, Button, Divider } from 'semantic-ui-react';
+import { Grid, Row, Navbar, NavItem, Nav } from 'react-bootstrap';
+import { Card, Image, Divider, Button } from 'semantic-ui-react';
 
 class Portfolio extends React.Component {
 
@@ -24,7 +24,7 @@ class Portfolio extends React.Component {
           <NavItem>Settings</NavItem>
           </Nav>
         </Navbar>
-        <Grid className="profile" fluid="true">
+        <Grid className="profile" fluid={false}>
           <Row>
             {/* <Col lg={2}>
             </Col>
@@ -42,7 +42,9 @@ class Portfolio extends React.Component {
                 <p><span className="sumOutstanding">${this.props.sumOutstanding}</span></p>
                 <p>Outstanding Loans</p>
 
-                <button><Link to='/Lend'>Find a Loan</Link></button>
+                <div className="FindALoan">
+                  <Button size="massive" color="blue"><Link to="/Lend" onClick={this.loggedIn}>Find a Loan</Link></Button>
+                </div>
 
                 <Divider />
 
@@ -52,7 +54,7 @@ class Portfolio extends React.Component {
                   this.props.loansOutstanding ?
                   this.props.loansOutstanding.map(loan => {
                     return (
-                      <Card>
+                      <Card key={loan.id}>
                         <Image src={`http://www.kiva.org/img/h300w480/${loan.image}.jpg`} />
                       <Card.Content>
                       <Card.Header>

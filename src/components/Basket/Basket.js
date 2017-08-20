@@ -36,11 +36,9 @@ class Basket extends React.Component {
     let { cart } = this.props;
     console.log("cart: ", cart);
 
-    let total = 0;
-    
-    this.props.cart.map(item => {
-      total = total + Number(item.amount)
-    })
+    let total = this.props.cart.reduce((sum, value)=>{
+      return sum + Number(value.amount);
+    }, 0)
 
     return(
       <Grid className="Basket">
@@ -70,7 +68,7 @@ class Basket extends React.Component {
         {
           cart.map(loan => {
             return(
-              <Item>
+              <Item key={loan.loan.id}>
                 <Item.Image size="small" src={`http://www.kiva.org/img/h300w480/${loan.loan.image}.jpg`} />
 
                 <Card.Content extra>

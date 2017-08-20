@@ -17,7 +17,7 @@ class Lend extends React.Component {
   render(){
     console.log("Loans:", this.props.loans)
     return(
-      <Grid className="Lend" fluid="false">
+      <Grid className="Lend" fluid={true}>
         <Row>
 
           <Col lg={2}>
@@ -43,7 +43,7 @@ class Lend extends React.Component {
               <Loader active inline='centered' /> : 
               this.props.loans.map(loan => {
                 return (
-                  <Card>
+                  <Card key={loan.id}>
 
                     <Image src={`http://www.kiva.org/img/h300w480/${loan.image}.jpg`} />
 

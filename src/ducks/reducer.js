@@ -119,7 +119,6 @@ export function signOut(){
 }
 
 export function checkOut( cart ){
-  console.log("State.Cart", cart)
   return {
     type: CHECK_OUT,
     payload: axios.post('/api/checkout', cart)

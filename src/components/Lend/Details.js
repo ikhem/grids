@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
+import { Button, Icon, Item, Label } from 'semantic-ui-react'
 
 class Details extends React.Component {
   render(){

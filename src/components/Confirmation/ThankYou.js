@@ -18,9 +18,9 @@ class ThankYou extends React.Component {
 
   render(){
     let { cart } = this.props;
+    console.log("Kart: ", cart)
     let time = moment(new Date()).format("MMMM Do YYYY, h:mm a");
-    
-    console.log(time)
+
     return(
       <Grid className="Confirmation">
         <h1>Order Confirmed</h1>
