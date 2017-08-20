@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
 import { Icon } from 'semantic-ui-react';
 
@@ -26,7 +27,7 @@ export default function Landing(){
             <p><span className="title">Get repaid</span></p>
             <p><span className="description">Receive updates on your loans and see the dollars return to your Kiva account.</span></p>
 
-            <a href="/about/how">Learn more about how Kiva works</a>
+            <Link to="/about/how"><span className="description">Learn more about how Kiva works</span></Link>
           </Row>
 
           <Row className="Accolades">
@@ -49,20 +50,20 @@ export default function Landing(){
           <p><span className="Choose">Choose a category</span></p>
             <Icon size="massive" name="angle down" />
             <Row>
-            <Col lg={3} md={4} sm={6} className="Search"><p><input /><br/>Search</p></Col>
-            <Col lg={3} md={4} sm={6} className="Women" href=""><a href="">Women</a></Col>
-            <Col lg={3} md={4} sm={6} className="Agriculture" href=""><a href="">Agriculture</a></Col>
-            <Col lg={3} md={4} sm={6} className="Education" href=""><a href="">Education</a></Col>
+            <Col lg={3} md={4} sm={6} className="Search"><p><input /><span className="desc">Search</span></p></Col>
+            <Col lg={3} md={4} sm={6} className="Women" href=""><Link to="">Women</Link></Col>
+            <Col lg={3} md={4} sm={6} className="Agriculture" href=""><Link to="">Agriculture</Link></Col>
+            <Col lg={3} md={4} sm={6} className="Education" href=""><Link to="">Education</Link></Col>
 
-            <Col lg={3} md={4} sm={6} className="Health" href=""><a href="">Health</a></Col>
-            <Col lg={3} md={4} sm={6} className="SingleParents" href=""><a href="">Single Parents</a></Col>
-            <Col lg={3} md={4} sm={6} className="Refugees" href=""><a href="">Refugees and IDPs</a></Col>
-            <Col lg={3} md={4} sm={6} className="Shelter" href=""><a href="">Shelter</a></Col>
+            <Col lg={3} md={4} sm={6} className="Health" href=""><Link to="">Health</Link></Col>
+            <Col lg={3} md={4} sm={6} className="SingleParents" href=""><Link to="">Single Parents</Link></Col>
+            <Col lg={3} md={4} sm={6} className="Refugees" href=""><Link to="">Refugees and IDPs</Link></Col>
+            <Col lg={3} md={4} sm={6} className="Shelter" href=""><Link to="">Shelter</Link></Col>
         
-            <Col lg={3} md={4} sm={6} className="Food" href=""><a href="">Food</a></Col>
-            <Col lg={3} md={4} sm={6} className="KivaUSA" href=""><a href="">Kiva U.S.</a></Col>
-            <Col lg={3} md={4} sm={6} className="Expiring" href=""><a href="">Expiring Soon</a></Col>
-            <Col lg={3} md={4} sm={6} className="All" href=""><a href="">All Loans</a></Col>
+            <Col lg={3} md={4} sm={6} className="Food" href=""><Link to="">Food</Link></Col>
+            <Col lg={3} md={4} sm={6} className="KivaUSA" href=""><Link to="">Kiva U.S.</Link></Col>
+            <Col lg={3} md={4} sm={6} className="Expiring" href=""><Link to="">Expiring Soon</Link></Col>
+            <Col lg={3} md={4} sm={6} className="All" href=""><Link to="">All Loans</Link></Col>
             </Row>
             {/* </Col> */}
         </Row>
@@ -70,11 +71,11 @@ export default function Landing(){
 
       <Row className="Social">
         <p>Follow us</p> 
-        <Icon link circular name="facebook square" size="massive" />
-        <Icon link circular name="twitter" size="massive" />
-        <Icon link circular name="youtube square" size="massive" />
-        <Icon link circular name="linkedin square" size="massive" />
-        <Icon link circular name="instagram" size="massive" />
+        <a href="https://www.facebook.com/kiva"><Icon link circular name="facebook square" size="massive" /></a>
+        <a href="https://twitter.com/Kiva"><Icon link circular name="twitter" size="massive" /></a>
+        <a href="https://www.youtube.com/user/kiva"><Icon link circular name="youtube square" size="massive" /></a>
+        <a href="https://www.linkedin.com/company/266361"><Icon link circular name="linkedin square" size="massive" /></a>
+        <a href="https://www.instagram.com/kiva_microloans/"><Icon link circular name="instagram" size="massive" /></a>
       </Row>
 
       <Row className="BottomPic">

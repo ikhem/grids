@@ -1,10 +1,11 @@
 .profile {
   min-height: 800px;
+  padding-bottom:30px;
 }
 
 .name {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 40px;
 }
 
 .profile img.ui.image{
@@ -22,10 +23,16 @@
 .sumOutstanding {
   color: green;
   font-size: bold;
-  font-size: 60px;
+  font-size: 48px;
+  margin: 20px 0px 20px 0px;
 }
 
 .NavProfile {
   background-color: #236133;
   font-size: 14px;
+}
+
+.underTag {
+  font-weight: bold;
+  font-size: 18px;
 }

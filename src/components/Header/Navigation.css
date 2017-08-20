@@ -36,10 +36,13 @@
 }
 
 .Cat {
-  font-size: bold;
-  margin-left: 15px;
+  font-weight: bold;
+  /* margin-left: 15px;
   margin-top: 10px;
-  padding-top: 5px;
+  padding-top: 5px; */
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
 }
 
 .ui.steps {

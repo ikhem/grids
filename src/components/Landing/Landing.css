@@ -1,7 +1,7 @@
 .row {
   /* border: 1px solid black;    */
   text-align: center;
-   margin: 0; 
+  margin: 0; 
 }
 
 .col-lg-6 {
@@ -28,6 +28,7 @@
 .description {
   color: #236133;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .repeat {
@@ -258,4 +259,11 @@
 
  i.huge.icon:hover {
    color: navy;
+ }
+
+ .StartLending .desc {
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 10px;
  }

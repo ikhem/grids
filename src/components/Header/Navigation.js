@@ -32,7 +32,7 @@ class Navigation extends React.Component {
       <Nav>
         <NavItem><Link to="/"><span className="Logo">Kiva</span></Link></NavItem> 
         <NavDropdown title="Lend">
-          <h3 className="Cat">Categories</h3>
+          <MenuItem><span className="Cat">Categories</span></MenuItem>
             <MenuItem>Women</MenuItem>
             <MenuItem>Agriculture</MenuItem>
             <MenuItem>Education</MenuItem>

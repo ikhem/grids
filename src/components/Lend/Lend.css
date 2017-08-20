@@ -1,6 +1,7 @@
 .Lend {
   min-height: 800px;
   padding-top: 80px;
+  text-align: left;
 }
 
 .Lend img.ui.image{

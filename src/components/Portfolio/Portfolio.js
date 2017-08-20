@@ -40,7 +40,7 @@ class Portfolio extends React.Component {
                 }
 
                 <p><span className="sumOutstanding">${this.props.sumOutstanding}</span></p>
-                <p>Outstanding Loans</p>
+                <p className="underTag">Outstanding Loans</p>
 
                 <div className="FindALoan">
                   <Button size="massive" color="blue"><Link to="/Lend" onClick={this.loggedIn}>Find a Loan</Link></Button>
