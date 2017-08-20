@@ -12,7 +12,7 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
     defaultZoom={2}
-    defaultCenter={{ lat: 42, lng: 23 }}
+    defaultCenter={{ lat: 24, lng: 46 }}
     onClick={props.onMapClick}
   >
     {props.markers.map(marker => (
@@ -31,7 +31,7 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    
+
     // Get the map markers from outstanding loans
     let markers = this.props.loansOutstanding.map(item => {
       return { position: { "lat": item.long, "lng" : item.lat } }
