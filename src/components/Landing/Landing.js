@@ -70,11 +70,11 @@ export default function Landing(){
 
       <Row className="Social">
         <p>Follow us</p> 
-        <Icon link circular name="facebook square" size="huge" />
-        <Icon link circular name="twitter" size="huge" />
-        <Icon link circular name="youtube square" size="huge" />
-        <Icon link circular name="linkedin square" size="huge" />
-        <Icon link circular name="instagram" size="huge" />
+        <Icon link circular name="facebook square" size="massive" />
+        <Icon link circular name="twitter" size="massive" />
+        <Icon link circular name="youtube square" size="massive" />
+        <Icon link circular name="linkedin square" size="massive" />
+        <Icon link circular name="instagram" size="massive" />
       </Row>
 
       <Row className="BottomPic">

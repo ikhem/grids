@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getLoans, addToCart } from '../../ducks/reducer';
 
-import { Card, Image, Progress, Button, Loader, Menu, Search} from 'semantic-ui-react';
+import { Card, Image, Progress, Button, Loader, Menu, Search, Flag } from 'semantic-ui-react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import './Lend.css';
@@ -67,11 +67,10 @@ class Lend extends React.Component {
 
                     <Card.Content extra>
                       <div className="ui two buttons">
-                        <Button onClick = { () => this.props.addToCart(loan, 25) } color="green" size="large">Lend $25</Button>
-                        <Button inverted color="green" size="large">Learn More</Button>
+                        <Button fluid onClick = { () => this.props.addToCart(loan, 25) } color="green" size="large">Lend $25</Button>
+                        <Button fluid inverted color="green" size="large">Learn More</Button>
                       </div>
                     </Card.Content>
-
                   </Card> 
                 )
               })

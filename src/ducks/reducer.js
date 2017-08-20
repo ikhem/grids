@@ -14,11 +14,8 @@ export default function reducer(state, action){
   switch(action.type){
     case GET_USER + '_PENDING':
       return state;
+
     case GET_USER + '_FULFILLED':
-      // console.log("action.payload", action.payload.data);
-      // console.log("User going into state: ", action.payload.data.user);
-      // console.log("sum:", action.payload.data.sumOutstanding);
-      // console.log("loans", action.payload.data.loansOutstanding);
       let { user, sumOutstanding, loansOutstanding } = action.payload.data;
 
       sumOutstanding = sumOutstanding ? sumOutstanding : 0
@@ -28,17 +25,19 @@ export default function reducer(state, action){
 
     case GET_LOANS + '_PENDING':
       return state
+
     case GET_LOANS + '_FULFILLED':
       console.log("Fulfilled", action.payload.data)
       return Object.assign({}, state, { loans: action.payload.data });
-    // case GET_LOANS:
-    //   return Object.assign({}, state, { loans: action.payload });
+
     case ADD_TO_CART:
       return Object.assign({}, state, { cart: [...state.cart, action.payload]})
+
     case REMOVE_FROM_CART:
       return Object.assign({}, state, { cart: state.cart.filter(item =>{
         return item.loan.id != action.payload
       })})
+
     case UPDATE_CART:
       console.log("id:", action.payload.id)
       console.log("amount:", action.payload.amount)
@@ -50,15 +49,19 @@ export default function reducer(state, action){
       })
       console.log("New Cart: ", newCart)
       return Object.assign({}, state, { cart: newCart });
+
     case SIGN_OUT + '_FULFILLED':
-      // localStorage.clear();
       return Object.assign({}, state, {});
-      case CHECK_OUT + '_PENDING':
-        return state;
-      case CHECK_OUT + '_FULFILLED':
-        return Object.assign({}, state, { cart: action.payload.data } )
-      case LOGGED_OUT:
-        return Object.assign({}, state, { user: action.payload, cart: [] })
+
+    case CHECK_OUT + '_PENDING':
+      return state;
+
+    case CHECK_OUT + '_FULFILLED':
+      return Object.assign({}, state, { cart: action.payload.data } )
+
+    case LOGGED_OUT:
+      return Object.assign({}, state, { user: action.payload, cart: [] })
+
     default:
       return state;
   }

@@ -7,8 +7,8 @@
 }
 
 .Payment p {
-  text-align: center;
-  font-size: 28px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .ui.table {
@@ -21,4 +21,8 @@
 
 .ui.table {
   margin-top: 0px;
+}
+
+.ui.striped.table tbody tr:nth-child(2n), .ui.striped.table>tr:nth-child(2n){
+  background-color: rgba(0,0,50,.05);
 }

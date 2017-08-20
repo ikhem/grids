@@ -6,7 +6,6 @@ const session = require('express-session');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const keys = require('./keys');
-
 const stripe = require('stripe')(keys.secret_key);
 
 const mainCtrl = require('./controllers/mainCtrl');
@@ -56,7 +55,7 @@ passport.use(new Auth0Strategy({
         return done(null, profile) // Go to serialize user when done is invoked
       }).catch( (e) => console.log(e))
     } else {
-      console.log("user: ", user[0]);
+      console.log("User has signed on.");
       return done(null, user[0]);
       // return done(null, profile);  Go to serialize user when done is invoked
     }

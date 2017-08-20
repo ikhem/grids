@@ -66,6 +66,7 @@ class Basket extends React.Component {
           </Step>
 
         </Step.Group>
+        
         <Item.Group divided>
         {
           cart.map(loan => {

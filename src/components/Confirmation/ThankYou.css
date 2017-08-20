@@ -2,3 +2,22 @@
   min-height: 800px;
   text-align: center;
 }
+
+.Receipt p {
+  font-weight: bold;
+  margin: 0px;
+}
+
+i.huge.icon {
+  font-size: 3.5em;
+  margin: 0px 35px 0px 35px;
+}
+
+.lendWithFriends {
+  font-size: 20px;
+  color: green;
+}
+
+.Confirmation h1 {
+  font-size: 50px;
+}

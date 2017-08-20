@@ -4,18 +4,12 @@ module.exports = {
 
     db.get_loans()
       .then( loans => {
-        console.log(loans)
-        // db.get_fundedAmount([loans.])
         res.status(200).send(loans)})
       .catch( () => res.status(500).send());
   },
   getPortfolio: (req, res) => {
-
     const db = req.app.get('db');
-    // console.log("Console from line 94 req.user", req.user)
-
-    console.log("User ID:", req.user)
-
+    console.log("u: ", req.user);
     db.get_outstandingSum([req.user.id]).then(money => {
       db.get_outstandingLoans([req.user.id]).then(loans => {
         res.status(200).send({user: req.user, sumOutstanding: money[0].sum , loansOutstanding: loans});
@@ -27,7 +21,7 @@ module.exports = {
   },
   signOut: (req, res) => {
     req.logout();
-    console.log('signed out')
+    console.log('User has signed out. Redirect to landing page.');
     res.status(200).send(true);
   },
   checkOut: (req, res) => {

@@ -30,3 +30,7 @@
 .LoanTitle {
   color: rgb(38, 182, 232);
 }
+
+.profile .ui.card, .ui.cards>.card:hover{
+  box-shadow: 4px 4px 20px #888888;
+}

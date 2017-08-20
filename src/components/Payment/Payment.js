@@ -75,10 +75,10 @@ class Payment extends React.Component {
           cart.map(loan => {
           return(
             <Table.Row verticalAlign='top'>
-              <Table.Cell><h4>{loan.loan.name}</h4></Table.Cell>
-              <Table.Cell>${loan.amount}</Table.Cell>
-              <Table.Cell>1</Table.Cell>
-              <Table.Cell>${loan.amount}</Table.Cell>
+              <Table.Cell><p>{loan.loan.name}</p></Table.Cell>
+              <Table.Cell><p>${loan.amount}</p></Table.Cell>
+              <Table.Cell><p>1</p></Table.Cell>
+              <Table.Cell><p>${loan.amount}</p></Table.Cell>
             </Table.Row>
             )
             })
