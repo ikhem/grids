@@ -1,1 +1,1 @@
-SELECT loans.id, borrowers.name, status, funded_amount, borrowers.image, borrowers.location as country, origination_date, expiration_date, loan_amount, purpose as use, lender_count FROM loans JOIN borrowers ON borrowers.id = loans.id
+SELECT loans.id, borrowers.name, status, funded_amount, borrowers.image, borrowers.location as country, borrowers.long as long, borrowers.lat as lat, origination_date, expiration_date, loan_amount, purpose as use, lender_count FROM loans JOIN borrowers ON borrowers.id = loans.id

@@ -26,28 +26,17 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
 
 class Portfolio extends React.Component {
 
-  state = {
-    markers: [{
-      position: {
-        lat: 13,
-        lng: 105,
-      },
-      key: `Taiwan`,
-      defaultAnimation: 2,
-    },
-    {
-      position: {
-        lat: 42,
-        lng: 23
-      }
-    }],
-  };
-
   componentDidMount(){
     this.props.getUser();
   }
 
   render() {
+    
+    // Get the map markers from outstanding loans
+    let markers = this.props.loansOutstanding.map(item => {
+      return { position: { "lat": item.long, "lng" : item.lat } }
+    })
+
     return (
       <div>
         <Navbar collapseOnSelect className="NavProfile">
@@ -119,7 +108,7 @@ class Portfolio extends React.Component {
               }
               onMapLoad={this.handleMapLoad}
               onMapClick={this.handleMapClick}
-              markers={this.state.markers}
+              markers={markers}
               onMarkerRightClick={this.handleMarkerRightClick}
             />
           </Row>
