@@ -26,7 +26,6 @@ export default function reducer(state, action){
       return state
 
     case GET_LOANS + '_FULFILLED':
-      console.log("Fulfilled", action.payload.data)
       return Object.assign({}, state, { loans: action.payload.data });
 
     case ADD_TO_CART:
@@ -38,15 +37,13 @@ export default function reducer(state, action){
       })})
 
     case UPDATE_CART:
-      console.log("id:", action.payload.id)
-      console.log("amount:", action.payload.amount)
       let newCart = state.cart.map(item =>{
         if(item.loan.id === action.payload.id){
           item.amount = action.payload.amount
         }
         return item
       })
-      console.log("New Cart: ", newCart)
+
       return Object.assign({}, state, { cart: newCart });
 
     case SIGN_OUT + '_FULFILLED':
@@ -85,7 +82,6 @@ export function getLoans(){
 }
 
 export function addToCart( loan, amount ){
-  console.log("addingToCart function:", loan)
   return {
     type: ADD_TO_CART,
     payload: { loan, amount }
@@ -93,7 +89,6 @@ export function addToCart( loan, amount ){
 }
 
 export function removeFromCart( id ){
-  console.log("item to remove:", id)
   return {
     type: REMOVE_FROM_CART,
     payload: id
@@ -101,7 +96,6 @@ export function removeFromCart( id ){
 }
 
 export function updateCart( id, amount ){
-  console.log("A: ", amount)
   return {
     type: UPDATE_CART,
     payload: { id, amount }
@@ -109,7 +103,6 @@ export function updateCart( id, amount ){
 }
 
 export function signOut(){
-  console.log("logout");
   let promise = axios.get('/api/signout')
   return{
     type: SIGN_OUT,

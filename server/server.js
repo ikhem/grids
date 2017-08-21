@@ -51,7 +51,6 @@ passport.use(new Auth0Strategy({
     if(!user.length){
       db.create_user([authId, nickname, givenName, familyName, email, picture])
       .then((userCreated) => {
-        console.log("Profile:", profile)
         return done(null, profile) // Go to serialize user when done is invoked
       }).catch( (e) => console.log(e))
     } else {
@@ -118,8 +117,6 @@ app.post('/api/payment', function(req, res, next){
 });
 
 });
-
-
 
 const port = 3001;
 app.listen(port, () => {
