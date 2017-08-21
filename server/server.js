@@ -6,7 +6,7 @@ const session = require('express-session');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const keys = require('./keys');
-const stripe = require('stripe')(keys.secret_key);
+const stripe = require('stripe')(keys.SECRET_KEY);
 
 const mainCtrl = require('./controllers/mainCtrl');
 
@@ -17,7 +17,7 @@ app.use(cors());
 
 //Setup Auth0
 app.use(session({
-  secret: 'asdlfk;jalskdfj;askdjfj',
+  secret: keys.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }));
@@ -27,15 +27,15 @@ app.use(passport.session());
 
 //Setup database through massive
 
-massive('postgres://qxcjfjmp:RSfd5jALpVgRaeefqISBrCKgVMl5aHr0@stampy.db.elephantsql.com:5432/qxcjfjmp').then( db => {
+massive(keys.CONNECTION_STRING).then( db => {
   app.set('db', db);
   db.create_tables();
 });
 
 passport.use(new Auth0Strategy({
-  domain: keys.domain,
-  clientID: keys.clientID,
-  clientSecret: keys.clientSecret,
+  domain: keys.DOMAIN,
+  clientID: keys.CLIENTID,
+  clientSecret: keys.CLIENTSECRET,
   callbackURL: 'http://localhost:3001/auth/callback'
 }, function(accessToken, refreshToken, extraParams, profile, done) {
   //Go to db to find and create user
@@ -80,6 +80,8 @@ app.get('/api/getLoans', mainCtrl.getLoans);
 
 app.post('/api/checkout', mainCtrl.checkOut);
 
+// Stripe Implementation
+
 app.post('/api/payment', function(req, res, next){
   //convert amount to pennies
   const amountArray = req.body.amount.toString().split('');
@@ -101,20 +103,21 @@ app.post('/api/payment', function(req, res, next){
     	pennies.push(amountArray[i])
     }
   }
+
   const convertedAmt = parseInt(pennies.join(''));
 
   const charge = stripe.charges.create({
-  amount: convertedAmt, // amount in cents, again
-  currency: 'usd',
-  source: req.body.token.id,
-  description: 'Test charge from react app'
-}, function(err, charge) {
+    amount: convertedAmt, // amount in cents, again
+    currency: 'usd',
+    source: req.body.token.id,
+    description: 'Test charge from react app'
+    }, function(err, charge) {
     if (err) return res.sendStatus(500)
     return res.sendStatus(200);
-  // if (err && err.type === 'StripeCardError') {
-  //   // The card has been declined
-  // }
-});
+    // if (err && err.type === 'StripeCardError') {
+    //   // The card has been declined
+    // }
+    });
 
 });
 

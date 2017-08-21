@@ -19,8 +19,8 @@ export default function Footer(){
       <br/>
 
       <div className="Nav-bottom">
-        <Link to="/Legal/Privacy">Privacy Policy</Link>
-        <Link to="/Legal/Terms">Terms of Use</Link>
+        <Link to="/">Privacy Policy</Link>
+        <Link to="/">Terms of Use</Link>
       </div>
 
       <br />
