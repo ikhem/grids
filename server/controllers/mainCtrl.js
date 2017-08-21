@@ -3,6 +3,11 @@ module.exports = {
 
     const db = req.app.get('db');
 
+    // let funAmount = db.get_fundedAmount()
+    //   .then( fundedAmount => {
+    //     return fundedAmount
+    // });
+
     db.get_loans()
       .then( loans => {
         res.status(200).send(loans)})
@@ -38,7 +43,7 @@ module.exports = {
     const db = req.app.get('db');
 
     req.body.map(loan => {
-    db.add_transaction([id, loan.loan.id, loan.amount]).then(confirm => res.status(200) )  
+      db.add_transaction([id, loan.loan.id, loan.amount]).then(confirm => res.status(200) )  
     })
   
     res.status(200).send([])
