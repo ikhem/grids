@@ -4,7 +4,7 @@ import './Karousel.css';
 
 export default function Karousel(){
   return(
-    <Carousel className="Karousel">
+    <Carousel interval={3000} className="Karousel">
       <Carousel.Item>
         <Carousel.Caption>
           <p>Dreams are universal. Opportunity is not.</p>
