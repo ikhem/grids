@@ -87,7 +87,9 @@ class Portfolio extends React.Component {
                         {loan.country}
                       </Card.Meta>
                       </Card.Content>
-                      Paying back
+                      <Card.Content extra>
+                        Paying back
+                      </Card.Content>
                     </Card> 
                   )
                 }) :

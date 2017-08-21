@@ -51,17 +51,7 @@ passport.use(new Auth0Strategy({
     if(!user.length){
       db.create_user([authId, nickname, givenName, familyName, email, picture])
       .then((userCreated) => {
-
-        let user = {
-          authid: profile.id,
-          email: profile.emails[0].value,
-          firstname: profile.name.givenName || "anonymous",
-          lastname: profile.name.familyName || "anonymous",
-          nickname: profile.nickname || "anonymous",
-          picture: profile.picture
-        }
-
-        return done(null, user)
+        return done(null, userCreated[0])
         // return done(null, profile) // Go to serialize user when done is invoked
       }).catch( (e) => console.log(e))
     } else {

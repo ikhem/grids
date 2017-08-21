@@ -10,9 +10,10 @@ module.exports = {
 
     db.get_loans()
       .then( loans => {
+        var newLoans = loans
         res.status(200).send(loans)})
       .catch( () => res.status(500).send());
-
+      
   },
   getPortfolio: (req, res) => {
 
