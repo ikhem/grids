@@ -10,6 +10,7 @@
 
 .Lend .ui.card, .ui.cards>.card {
   border-radius: 0px;
+  width: 274px;
 }
 
 .progress {

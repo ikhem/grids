@@ -19,7 +19,6 @@ export default function reducer(state, action){
       let { user, sumOutstanding, loansOutstanding } = action.payload.data;
 
       sumOutstanding = sumOutstanding ? sumOutstanding : 0
-      console.log("SO", sumOutstanding)
 
       return Object.assign({}, state, { user, sumOutstanding , loansOutstanding })
 
