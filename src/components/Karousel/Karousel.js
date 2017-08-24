@@ -14,7 +14,7 @@ export default function Karousel(){
       </Carousel.Item>
       <Carousel.Item>
         <Carousel.Caption>
-          <p>With as little as $25, you can help people around the world create opportunity for themselves, their familes and their communities.</p>
+          <p>With as little as $25, you can help people around the world create opportunity for themselves, their families and their communities.</p>
         </Carousel.Caption>
         <img alt="img2l" src={require("./img/hp-slideshow-l2-med-std.jpg")} />
         <img alt="img2r" src={require("./img/hp-slideshow-r2-med-std_0.jpg")} />
