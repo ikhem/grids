@@ -14,7 +14,6 @@ import Details from './components/Lend/Details';
 import Footer from './components/Footer/Footer';
 
 // import routes from './routes';
-import './App.css';
 
 class Wrapper extends React.Component {
   render() {
